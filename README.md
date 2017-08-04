@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Projeto MEAN (MongoDB, Express, AngularJS e NodeJS)
 Projeto conceito para implementar uma aplicação Web usando o Framework MEAN que utiliza as tecnologias: MongoDB, Express, AngularJS e NodeJS.
 
@@ -87,3 +88,7 @@ O projeto será adaptado para os seguintes temas (themes):
 	A Hands-on Introduction to Frameworks and Containers
 - Markus Eisele: 2016, O’Reilly Media, Inc., [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture/): <br /> 
 	Building Scalable Architecture for Sustainable Enterprise Development. 
+=======
+# e-arq-aktienow
+Projeto Conceito para o processo seletivo Akite Now usando a especificação do e-Arq como base. 
+>>>>>>> master
