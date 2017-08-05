@@ -76,6 +76,9 @@ O projeto será adaptado para os seguintes temas (themes):
 ![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
 ### Referência
+\[Conarq, Conselho Nacional de Arquivos: 2011\], Copyright © 2011 Conselho Nacional de Arquivos, [e-ARQ Brasil](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf)<br />
+\[Caio Ribeiro Pereira: 2016\], Apress, [Building APIs with Node.js](https://www.amazon.com/Building-APIs-Node-js-Ribeiro-Pereira/dp/1484224418)<br />
+\[Valentin Bojinov: 2015\], Copyright © 2015 Packt Publishing, [RESTful Web API Design with Node.js](https://www.packtpub.com/web-development/restful-web-api-design-nodejs): Design and implement comprehensive RESTful solutions in Node.js<br />
 \[Valeri Karpov, Diego Netto: 2015\], John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)<br />
 \[Amos Q. Haviv: 2014\], Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): Master real-time web application development using a mean combination of MongoDB, Express, AngularJS, and Node.js. <br />
 \[Sébastien Goasguen: 2016\], O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): SOLUTIONS AND EXAMPLES FOR BUILDING DISTRIBUTED APPLICATIONS.<br />
