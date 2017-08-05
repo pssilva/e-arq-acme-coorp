@@ -1,7 +1,7 @@
 e-Arq Aktie Now 
 ==============================================================
 
-Projeto prático para o processo seletivo Akite Now usando a especificação do [e-Arq](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf) como base. Usando core do projeto conceito Projeto [MEAN (MongoDB, Express, AngularJS e NodeJS)](https://github.com/pssilva/projeto-mean) para reutilização de soluções coesas. E buscando atender as restrições do teste em si: [DESAFIO AKTIENOW](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/Desafio Aktienow.pdf).
+Projeto prático para o processo seletivo Akite Now usando a especificação do [e-Arq](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf) como base. Usando core do projeto conceito Projeto [MEAN (MongoDB, Express, AngularJS e NodeJS)](https://github.com/pssilva/projeto-mean) para reutilização de soluções coesas. E buscando atender as restrições do teste em si: [DESAFIO AKTIENOW](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/Desafio%20Aktienow.pdf).
 
 ## Objetivos Principais [Conceitos](http://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment):
 - Criar uma sistema usando as tecnologias: MongoDB, Express, AngularJS, and Node.js;
@@ -76,15 +76,11 @@ O projeto será adaptado para os seguintes temas (themes):
 ![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
 ### Referência
-\[Valeri Karpov, Diego Netto: 2015\], John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)
-\[Amos Q. Haviv: 2014\], Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): <br />
-	Master real-time web application development using a mean combination of MongoDB, Express, AngularJS, and Node.js.
-\[Sébastien Goasguen: 2016\], O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): <br />
-	SOLUTIONS AND EXAMPLES FOR BUILDING DISTRIBUTED APPLICATIONS.
-\[Alan Mark Berg: 2015\],  Packt Publishing, [Jenkins Continuous Integration Cookbook](https://ebooks-it.org/1784390089-ebook.htm), Second Edition
-\[Alan Mark Berg: 2015 - 5\],  __ Chapter 5: Kubernetes, pag 149.
-\[Christian Posta: 2016\], O’Reilly Media, Inc., [Microservices for Java Developers](https://developers.redhat.com/promotions/microservices-for-java-developers/): <br />
-	A Hands-on Introduction to Frameworks and Containers
-\[Markus Eisele: 2016\], O’Reilly Media, Inc., [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture/): <br /> 
-	Building Scalable Architecture for Sustainable Enterprise Development. 
+\[Valeri Karpov, Diego Netto: 2015\], John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)<br />
+\[Amos Q. Haviv: 2014\], Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): Master real-time web application development using a mean combination of MongoDB, Express, AngularJS, and Node.js. <br />
+\[Sébastien Goasguen: 2016\], O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): SOLUTIONS AND EXAMPLES FOR BUILDING DISTRIBUTED APPLICATIONS.<br />
+\[Alan Mark Berg: 2015\],  Packt Publishing, [Jenkins Continuous Integration Cookbook](https://ebooks-it.org/1784390089-ebook.htm), Second Edition<br />
+\[Christian Posta: 2016\], O’Reilly Media, Inc., [Microservices for Java Developers](https://developers.redhat.com/promotions/microservices-for-java-developers/): A Hands-on Introduction to Frameworks and Containers <br />
+\[Markus Eisele: 2016\], O’Reilly Media, Inc., [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture/):
+	Building Scalable Architecture for Sustainable Enterprise Development. <br />
 
