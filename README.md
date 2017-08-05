@@ -1,5 +1,7 @@
-# Projeto MEAN (MongoDB, Express, AngularJS e NodeJS)
-Projeto conceito para implementar uma aplicação Web usando o Framework MEAN que utiliza as tecnologias: MongoDB, Express, AngularJS e NodeJS.
+e-Arq Aktie Now 
+==============================================================
+
+Projeto prático para o processo seletivo Akite Now usando a especificação do [e-Arq](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf) como base. Usando core do projeto conceito Projeto [MEAN (MongoDB, Express, AngularJS e NodeJS)](https://github.com/pssilva/projeto-mean) para reutilização de soluções coesas. E buscando atender as restrições do teste em si: [DESAFIO AKTIENOW](https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/referencias/Desafio Aktienow.pdf).
 
 ## Objetivos Principais [Conceitos](http://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment):
 - Criar uma sistema usando as tecnologias: MongoDB, Express, AngularJS, and Node.js;
@@ -8,32 +10,30 @@ Projeto conceito para implementar uma aplicação Web usando o Framework MEAN qu
 - Projetar Sistemas usando Arquiterura Microservices;
 - Implantação Contínua (Continuous Deployment);
 
-Para construir a imagem usei as orientações discutidas em [Oskar Hane: 2015].
 
 ### Adquirir Proficiências em Habilidades
 
-
 1. Experiência em sistemas de banco de dados NoSQL (Cassandra, [MongoDB](https://www.mongodb.com/), etc.);
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/mongoDB.png" alt="Experiência em sistemas de banco de dados NoSQL" height="50" width="195"/></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/mongoDB.png" alt="Experiência em sistemas de banco de dados NoSQL" height="50" width="195"/></p>
 2. Experiência em sistemas usando tecnologia não bloqueante [Node.js](https://nodejs.org/en/);
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/nodeJS.png" alt="Node.js" height="50" width="195"></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/nodeJS.png" alt="Node.js" height="50" width="195"></p>
 3. Experiência em sistemas usando [Express](http://expressjs.com/pt-br/);
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/expressjs.png" alt="Experiência em sistemas usando ExpressJs" height="50" width="195"></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/expressjs.png" alt="Experiência em sistemas usando ExpressJs" height="50" width="195"></p>
 4. Experiência em sistemas usando [AngularJS](https://angularjs.org/);
 	<p><img src="https://angularjs.org/img/AngularJS-large.png" alt="Experiência em sistemas usando AngularJs" height="50" width="195"></p>
 5. Experiência em sistemas de containerização (e.g. [Docker](https://hub.docker.com/r/pss1suporte/paas-docker/));
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/docker.png" alt="Experiência em sistemas de containerização Docker" height="50" width="195"></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/docker.png" alt="Experiência em sistemas de containerização Docker" height="50" width="195"></p>
 6. Experiência em sistemas Linux e shell scripting;
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/shell-linux.jpeg" alt="Experiência em sistemas Linux e shell scripting" height="91" width="150"></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/shell-linux.jpeg" alt="Experiência em sistemas Linux e shell scripting" height="91" width="150"></p>
 7. Experiência em sistemas Amazon Web Services - AWS;
-	<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/aws.png" alt="Experiência em sistemas Amazon Web Services - AWS" height="50" width="195"></p>
+	<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/aws.png" alt="Experiência em sistemas Amazon Web Services - AWS" height="50" width="195"></p>
 8. Experiência em projetos utilizando micro serviços (Microservices) e computação distribuída;
 
 ### Como usar:
 Considerando que temos uma instância do Amazon Machine Image - AMI iniciada: [aqui](https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AccessingInstances.html) AWS EC2. Execute os comandos abaixo:
 
-- 1. Clonar o projeto: `git clone https://github.com/pssilva/projeto-mean.git`;
-- 2. Acessar a pasta: `cd projeto-mean`;
+- 1. Clonar o projeto: `git clone https://github.com/pssilva/e-arq-aktienow.git`;
+- 2. Acessar a pasta: `cd e-arq-aktienow`;
 - 3. Instalar as dependencias: `mpn install`;
 - 4. Instalar as dependencias: `bower install`;
 - 5. Antes de iniciar o servidor você deve definir as seguintes variáveis de ambiente: 
@@ -60,7 +60,7 @@ yo mean-app:createApp MyApp --feature-name='MyFeature' --structure-vertical
 NOTA: Mais detalhes em [generator-mean-app-crud](https://github.com/pssilva/generator-mean-app-crud).
 <br /> Com isso irá gerar um projeto com uma estrutura conforme figura abaixo:
 
-<p><img src="https://github.com/pssilva/projeto-mean/blob/master/doc-repo/vertical-structure-folder.png"></p>
+<p><img src="https://github.com/pssilva/e-arq-aktienow/blob/master/doc-repo/vertical-structure-folder.png"></p>
 
 Onde entendemos que a pasta feature representa a separação literal das funcionalidades. Exemplo, pretendo organizar authentication e authorization com o [OAuth2.0](https://oauth.net/2/) separadamente como um plugin usando a estrutura da pasta feature. 
 
@@ -76,18 +76,15 @@ O projeto será adaptado para os seguintes temas (themes):
 ![Gentelella Bootstrap Admin Template](https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/gentelella-admin-template-preview.jpg "Gentelella Theme Browser Preview")
 
 ### Referência
-- Valeri Karpov, Diego Netto: 2015, John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)
-- Amos Q. Haviv: 2014, Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): <br />
+\[Valeri Karpov, Diego Netto: 2015\], John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)
+\[Amos Q. Haviv: 2014\], Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): <br />
 	Master real-time web application development using a mean combination of MongoDB, Express, AngularJS, and Node.js.
-- Sébastien Goasguen: 2016, O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): <br />
+\[Sébastien Goasguen: 2016\], O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): <br />
 	SOLUTIONS AND EXAMPLES FOR BUILDING DISTRIBUTED APPLICATIONS.
-- Alan Mark Berg: 2015,  Packt Publishing, [Jenkins Continuous Integration Cookbook](https://ebooks-it.org/1784390089-ebook.htm), Second Edition
-- Alan Mark Berg: 2015 - 5,  __ Chapter 5: Kubernetes, pag 149.
-- Christian Posta: 2016, O’Reilly Media, Inc., [Microservices for Java Developers](https://developers.redhat.com/promotions/microservices-for-java-developers/): <br />
+\[Alan Mark Berg: 2015\],  Packt Publishing, [Jenkins Continuous Integration Cookbook](https://ebooks-it.org/1784390089-ebook.htm), Second Edition
+\[Alan Mark Berg: 2015 - 5\],  __ Chapter 5: Kubernetes, pag 149.
+\[Christian Posta: 2016\], O’Reilly Media, Inc., [Microservices for Java Developers](https://developers.redhat.com/promotions/microservices-for-java-developers/): <br />
 	A Hands-on Introduction to Frameworks and Containers
-- Markus Eisele: 2016, O’Reilly Media, Inc., [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture/): <br /> 
+\[Markus Eisele: 2016\], O’Reilly Media, Inc., [Modern Java EE Design Patterns](https://developers.redhat.com/promotions/distributed-javaee-architecture/): <br /> 
 	Building Scalable Architecture for Sustainable Enterprise Development. 
-# e-arq-aktienow
-Projeto Conceito para o processo seletivo Akite Now usando a especificação do e-Arq como base. 
-# e-arq-aktienow
-Projeto Conceito para o processo seletivo Akite Now usando a especificação do e-Arq como base. 
+
