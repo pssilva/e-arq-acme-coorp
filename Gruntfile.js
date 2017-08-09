@@ -12,9 +12,6 @@ module.exports = function(grunt) {
         dist: 'dist'
     };
 
-    console.log("appConfig");
-    console.log(appConfig);
-
     // [2] Project and task configuration 
     grunt.initConfig({
         // Project settings
@@ -44,3 +41,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['myServer']);
 
 };
+
+
+

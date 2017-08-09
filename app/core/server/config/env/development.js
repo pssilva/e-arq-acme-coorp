@@ -3,7 +3,7 @@
  * $export SESSION_SECRET=??????
  */
 module.exports = {
-		db: 'mongodb://localhost/project-mean',
+		db: 'mongodb://localhost::27017/eArqAktieNow',
 		sessionSecret: process.env.SESSION_SECRET, //'developmentSessionSecret'
 		facebook: {
 		       clientID: process.env.FACEBOOK_APP_ID, //'Application Id',

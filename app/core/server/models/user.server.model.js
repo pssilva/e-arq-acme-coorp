@@ -1,8 +1,10 @@
 /**
- * New node file
+ * 
+ * 
+ * 
  */
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+    Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
      firstName: String,
@@ -13,89 +15,93 @@ var UserSchema = new Schema({
          match: /.+\@.+\..+/
      },
      role: {
-    	 type: String,
-    	 enum: ['Admin', 'Owner', 'User']
-	 },
+         type: String,
+         enum: ['Admin', 'Owner', 'User', 'Public'],
+         "default": "Public"
+     },
      username: { 
-    	 type: String, 
-    	 trim: true,
-    	 unique: true,
-    	 required: true
+         type: String, 
+         trim: true,
+         unique: true,
+         required: true,
+         default: "public@localhost"
      },
      password: {
          type: String,
          validate: [
-		           function(password) {
-		             return password.length >= 6;
-				   },
-		           'Password should be longer'
-		         ]
+                   function(password) {
+                     return password.length >= 6;
+                   },
+                   'Password should be longer'
+                 ]
      },
-     created: {
-    	 type: Date,
-    	 "default": Date.now
-	 },
-	 website: {
-		 type: String,
-		 set: function(url) {
-			 if (!url) {
-		        return url;
-		      } else {
-		        if (url.indexOf('http://') !== 0 
-		        		&& url.indexOf('https://') !== 0) {
-		        	url = 'http://' + url;
-		        }
-		        return url;
-		      } 
-		 },
-		 get: function(url) {
-		      if (!url) {
-		    	  return url;
-			  } else {
-				  if (url.indexOf('http://') !== 0
-						  && url.indexOf('https://') !== 0) {
-				          	url = 'http://' + url;
-				        }
-				return url; 
-			 }
-		} 
-	}
+     website: {
+         type: String,
+         set: function(url) {
+             if (!url) {
+                return url;
+              } else {
+                if (url.indexOf('http://') !== 0 
+                        && url.indexOf('https://') !== 0) {
+                    url = 'http://' + url;
+                }
+                return url;
+              } 
+         },
+         get: function(url) {
+              if (!url) {
+                  return url;
+              } else {
+                  if (url.indexOf('http://') !== 0
+                          && url.indexOf('https://') !== 0) {
+                            url = 'http://' + url;
+                        }
+                return url; 
+             }
+        } 
+    },
+    created: {
+         type: Date,
+         "default": Date.now
+     },
+     modified: {
+         type: Date,
+         "default": Date.now
+     },
    });
 
+    /**
+     * Usando Mongoose Middleware
+     * Usando Pre-middleware
+     * */
+    UserSchema.pre('save', function(next) {
+        if (1==1) {
+            console.log('Usando Pre-middleware.');
+            next()
+        } else {
+            next(new Error('An Error Occured'));
+        }
+    });
+    
+    /**
+     * Usando Mongoose Middleware
+     * Usando Post-middleware
+     * */
+    UserSchema.post('save', function(next) {
+         if(this.isNew) {
+           console.log('A new user was created.');
+         } else {
+           console.log('A user updated is details.');
+         }
+    });
 
-
-	/**
-	 * Usando Mongoose Middleware
-	 * Usando Pre-middleware
-	 * */
-	UserSchema.pre('save', function(next) {
-	    if (1==1) {
-	    	console.log('Usando Pre-middleware.');
-	    	next()
-	    } else {
-	    	next(new Error('An Error Occured'));
-	    }
-	});
-	
-	/**
-	 * Usando Mongoose Middleware
-	 * Usando Post-middleware
-	 * */
-	UserSchema.post('save', function(next) {
-	     if(this.isNew) {
-	       console.log('A new user was created.');
-	     } else {
-	       console.log('A user updated is details.');
-	     }
-	});
-
-	UserSchema.virtual('fullName').get(function() {
-	    return this.firstName + ' ' + this.lastName;
-	}).set(function(fullName) {
-		var splitName = fullName.split(' '); 
-		this.firstName = splitName[0] || ''; 
-		this.lastName = splitName[1] || '';
-	});
+    UserSchema.virtual('fullName').get(function() {
+        return this.firstName + ' ' + this.lastName;
+    }).set(function(fullName) {
+        var splitName = fullName.split(' '); 
+        this.firstName = splitName[0] || ''; 
+        this.lastName = splitName[1] || '';
+    });
 
    UserSchema.set('toJSON', { getters: true, virtuals: true });
    mongoose.model('User', UserSchema);

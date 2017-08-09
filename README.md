@@ -43,8 +43,9 @@ export SESSION_SECRET=??????
 # será usado no sistema: process.env.NODE_ENV
 export NODE_ENV=development 
 ```
-- 6. Start Server: `grunt`;
-- 7. Acessar o sistema: `localhost:3000 ou localhost:9001`;
+- 6. Iniciar o serviço do MongoDB: `brew services start mongodb`;
+- 7. Start Server: `grunt`;
+- 8. Acessar o sistema: `localhost:3000 ou localhost:9001`;
 
 NOTA: MEAN CRUD - para criar um CRUD automaticamente use o comando: <br />
 `gradle -q createMeanCRUD -PmodelName=articles -PfeatureName=example`
