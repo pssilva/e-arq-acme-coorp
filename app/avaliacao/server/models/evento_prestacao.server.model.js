@@ -53,9 +53,9 @@ var eventoPrestacaoSchema = new Schema({
      * */
     eventoPrestacaoSchema.post('save', function(next) {
          if(this.isNew) {
-           console.log('A new user was created.');
+           console.log('A new [Evento Prestação] was created.');
          } else {
-           console.log('A user updated is details.');
+           console.log('A [Evento Prestação] updated is details.');
          }
     });
 

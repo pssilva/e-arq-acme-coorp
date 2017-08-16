@@ -19,19 +19,6 @@ var modeloExemploSchema = new Schema({
     	 "default": Date.now
 	}
    });
-
-	/**
-	 * Usando Mongoose Middleware
-	 * Usando Pre-middleware
-	 * */
-	modeloExemploSchema.pre('save', function(next) {
-	    if (1==1) {
-	    	console.log('Usando Pre-middleware.');
-	    	next()
-	    } else {
-	    	next(new Error('An Error Occured'));
-	    }
-	});
 	
 	/**
 	 * Usando Mongoose Middleware
@@ -39,9 +26,9 @@ var modeloExemploSchema = new Schema({
 	 * */
 	modeloExemploSchema.post('save', function(next) {
 	     if(this.isNew) {
-	       console.log('A new user was created.');
+	       console.log('A new modeloExemplo was created.');
 	     } else {
-	       console.log('A user updated is details.');
+	       console.log('A modeloExemplo updated is details.');
 	     }
 	});
 

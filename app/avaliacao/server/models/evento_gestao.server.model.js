@@ -42,19 +42,6 @@ var eventoGestaoSchema = new Schema({
              "default": Date.now
         }
     });
-
-    /**
-     * Usando Mongoose Middleware
-     * Usando Pre-middleware
-     * */
-    eventoGestaoSchema.pre('save', function(next) {
-        if (1==1) {
-            console.log('Usando Pre-middleware.');
-            next()
-        } else {
-            next(new Error('An Error Occured'));
-        }
-    });
     
     /**
      * Usando Mongoose Middleware
@@ -62,9 +49,9 @@ var eventoGestaoSchema = new Schema({
      * */
     eventoGestaoSchema.post('save', function(next) {
          if(this.isNew) {
-           console.log('A new user was created.');
+           console.log('A new [Evento Gestão] was created.');
          } else {
-           console.log('A user updated is details.');
+           console.log('A [Evento Gestão] updated is details.');
          }
     });
 

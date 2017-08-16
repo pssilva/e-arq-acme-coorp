@@ -8,7 +8,8 @@ var config = require('./config'),
     compress = require('compression'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    passport = require('passport');
 
 module.exports = function(db) {
     var app = express();
@@ -32,11 +33,15 @@ module.exports = function(db) {
     app.set('views', './app/admin/server/views');
     app.set('view engine', 'ejs');
 
+    app.use(passport.initialize());
+    app.use(passport.session());
+
     app.use(flash());
     
-    console.log("ID:43 :: admin :: express.js ");
+    console.log("ID:43 :: admin :: express.js");
 
     require('../routers/index.server.routers')(app);
+    require('../routers/users.server.routes.js')(app);
     /**#autoInsertRequire#*/
 
     app.use('/public',express.static('./app/core/client'));

@@ -1,7 +1,7 @@
 /**
  *   Classe - refere-se aos diversos níveis de agregação do plano de 
  *   classificação: classes, subclasses, grupos e subgrupos, que são 
- *   organizados de forma hierárquica. Em cada classe estão associadas 
+ *   organizados de forma hierárquica. Em cada classe estão associadas 
  *   informações a respeito da temporalidade e da destinação prevista 
  *   para os documentos nela classificados. Todas as alterações ocorridas 
  *   no plano de classificação devem ficar registradas nos metadados da classe.
@@ -14,16 +14,19 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var classeSchema = new Schema({
-    "classe_nome": { type: String, unique:true, required: true},  //Classe_nome
-    "classe_codigo": { type: String, required: true},  //Classe_código
-    "classe_subordinacao": { type: String},  //Classe_subordinação
-    "reg_cobertura": { type: String},  //Registro de abertura
-    "reg_destinacao": { type: String},  //Registro de desativação
-    "reativacao_classe": { type: String},  //Reativação de classe
-    "reg_mudanca_nome": { type: String},  //Registro de mudança de nome de classe 
-    "reg_deslocamento": { type: String},  //Registro de deslocamento de classe 
-    "reg_extincao": { type: String},  //Registro de extinção
-    "classe_status": { type: String},  //Indicador de classe ativa/inativa
+    "classe_nome": {type: String, unique:true, required: true},  //Classe_nome
+    "classe_codigo": {type: String, unique:true, required: true},  //Classe_código
+    "classe_subordinacao": {type: String},  //Classe_subordinação
+    "reg_cobertura": {type: String},  //Registro de abertura
+    "reg_destinacao": {type: String},  //Registro de desativação
+    "reativacao_classe": {type: String},  //Reativação de classe
+    "reg_mudanca_nome": {type: String},  //Registro de mudança de nome de classe 
+    "reg_deslocamento": {type: String},  //Registro de deslocamento de classe 
+    "reg_extincao": {type: String},  //Registro de extinção
+    "classe_status": {type: String,
+        enum: ['1 - Status1', '2 - Status2', '3 - Status3', '4 - Status4'],
+        "default": "2 - Status2"
+    },  //Indicador de classe ativa/inativa
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -37,19 +40,6 @@ var classeSchema = new Schema({
          "default": Date.now
     }
  });
-
-    /**
-     * Usando Mongoose Middleware
-     * Usando Pre-middleware
-     * */
-    classeSchema.pre('save', function(next) {
-        if (1==1) {
-            console.log('Usando Pre-middleware.');
-            next()
-        } else {
-            next(new Error('An Error Occured'));
-        }
-    });
     
     /**
      * Usando Mongoose Middleware
@@ -57,9 +47,9 @@ var classeSchema = new Schema({
      * */
     classeSchema.post('save', function(next) {
          if(this.isNew) {
-           console.log('A new user was created.');
+           console.log('A [classe] foi salva.');
          } else {
-           console.log('A user updated is details.');
+           console.log('A [classe] foi atualiziada.');
          }
     });
 

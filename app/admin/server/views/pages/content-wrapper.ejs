@@ -4,10 +4,16 @@
     <section class="content-header">
       
     </section>
-
     <!-- Main content -->
     <section class="content">
-
+      <% for(var i in aMessage) { %>
+        <div class="alert alert-success alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <h4><i class="icon fa fa-check"></i> Alert!</h4>
+          <%= aMessage[i] %>
+        </div>
+      <% } %>
+      
     </section>
     <!-- /.content -->
   </div>

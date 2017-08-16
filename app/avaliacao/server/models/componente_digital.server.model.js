@@ -46,19 +46,6 @@ var componenteDigitalSchema = new Schema({
          "default": Date.now
     }
  });
-
-    /**
-     * Usando Mongoose Middleware
-     * Usando Pre-middleware
-     * */
-    componenteDigitalSchema.pre('save', function(next) {
-        if (1==1) {
-            console.log('Usando Pre-middleware.');
-            next()
-        } else {
-            next(new Error('An Error Occured'));
-        }
-    });
     
     /**
      * Usando Mongoose Middleware
@@ -66,9 +53,9 @@ var componenteDigitalSchema = new Schema({
      * */
     componenteDigitalSchema.post('save', function(next) {
          if(this.isNew) {
-           console.log('A new user was created.');
+           console.log('A new [Componente Digital] was created.');
          } else {
-           console.log('A user updated is details.');
+           console.log('A [Componente Digital] updated is details.');
          }
     });
 

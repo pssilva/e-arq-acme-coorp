@@ -20,10 +20,12 @@ process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'developmentSessionSe
 console.log("ID:20 :: admin :: server.js");
 
 var mongoose = require('./mongoose'),
-    express = require('./express');
+    express = require('./express'),
+    passport = require('../../../core/server/config/passport');
    
-var db = mongoose();
-var app = express(db);
+var db = mongoose(),
+    app = express(db),
+    passport = passport();
     
    app.listen(3034);
    console.log('Server running at http://localhost:3034/');

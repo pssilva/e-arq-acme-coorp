@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 
 //Temporalidade associada à classe
 var classeTemporalidadeSchema = new Schema({
-    "classe_codigo": { type: String, unique:true, required: true},  //Classe_código
+    "classe_codigo": { type: String, unique:true, required: true},  //Classe_código
     "prazo_corrente": { type: String},  //Prazo de guarda na fase corrente
     "evento_prazo_corrente": { type: String},  //Evento que determina a contagem do prazo de guarda na fase corrente
     "prazo_intermediario": { type: String},  //Prazo de guarda na fase intermediária
@@ -28,19 +28,6 @@ var classeTemporalidadeSchema = new Schema({
          "default": Date.now
     }
  });
-
-	/**
-	 * Usando Mongoose Middleware
-	 * Usando Pre-middleware
-	 * */
-	classeTemporalidadeSchema.pre('save', function(next) {
-	    if (1==1) {
-	    	console.log('Usando Pre-middleware.');
-	    	next()
-	    } else {
-	    	next(new Error('An Error Occured'));
-	    }
-	});
 	
 	/**
 	 * Usando Mongoose Middleware
@@ -48,9 +35,9 @@ var classeTemporalidadeSchema = new Schema({
 	 * */
 	classeTemporalidadeSchema.post('save', function(next) {
 	     if(this.isNew) {
-	       console.log('A new user was created.');
+	       console.log('A new [Classe Temporalidade] was created.');
 	     } else {
-	       console.log('A user updated is details.');
+	       console.log('A [Classe Temporalidade] updated is details.');
 	     }
 	});
 
@@ -62,7 +49,7 @@ var classeTemporalidadeSchema = new Schema({
 	});
 
    classeTemporalidadeSchema.set('toJSON', { getters: true, virtuals: true });
-   mongoose.model('classe_temporalidade', classeTemporalidadeSchema);
+   mongoose.model('ClasseTemporalidade', classeTemporalidadeSchema);
 
 
 

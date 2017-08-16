@@ -21,10 +21,10 @@ var mongoose = require('mongoose'),
 var agenteSchema = new Schema({
     "nome": { type: String, unique:true, required: true},  //Nome
     "identificador": { type: String, unique:true, required: true},  //Identificador
-    "autorizacao_acesso": { type: String, unique:true, required: true},  //Autorização de acesso
-    "credenciais_autorizacao": { type: String, unique:true, required: true},  //Credenciais de autenticação
-    "relacao": { type: String, unique:true, required: true},  //Relação
-    "status": { type: String, unique:true, required: true},  //Status do agente
+    "autorizacao_acesso": { type: String, required: true},  //Autorização de acesso
+    "credenciais_autorizacao": { type: String, required: true},  //Credenciais de autenticação
+    "relacao": { type: String},  //Relação
+    "status": { type: String},  //Status do agente
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -38,19 +38,6 @@ var agenteSchema = new Schema({
          "default": Date.now
     }
  });
-
-    /**
-     * Usando Mongoose Middleware
-     * Usando Pre-middleware
-     * */
-    agenteSchema.pre('save', function(next) {
-        if (1==1) {
-            console.log('Usando Pre-middleware.');
-            next()
-        } else {
-            next(new Error('An Error Occured'));
-        }
-    });
     
     /**
      * Usando Mongoose Middleware
@@ -58,9 +45,9 @@ var agenteSchema = new Schema({
      * */
     agenteSchema.post('save', function(next) {
          if(this.isNew) {
-           console.log('A new user was created.');
+           console.log('A new [Agente] was created.');
          } else {
-           console.log('A user updated is details.');
+           console.log('A [Agente] updated is details.');
          }
     });
 

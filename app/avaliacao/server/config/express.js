@@ -36,6 +36,7 @@ module.exports = function(db) {
 
     app.use(flash());
     require('../routers/index.server.routers')(app);
+    require('../routers/avaliacao.server.routers')(app);
     /**#autoInsertRequire#*/
 
 

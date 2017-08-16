@@ -2,22 +2,29 @@
  * New node file
  */
 var User = require('mongoose').model('User'),
-	passport = require('passport');
+  passport = require('passport');
 
-console.log("ID:7 users.server.controller.js");
+/**
+  *
+  *
+  */
 exports.create = function(req, res, next) {
 
-	console.log("ID:9 users.server.controller.js");
-	var user = new User(req.body);
-		user.save(function(err) {
-	         if (err) {
-	           return next(err);
-	         } else {
-	           res.json(user);
-	         }
-		});
+  console.log("ID:9 users.server.controller.js");
+  var user = new User(req.body);
+    user.save(function(err) {
+           if (err) {
+             return next(err);
+           } else {
+             res.json(user);
+           }
+    });
 };
 
+/**
+  *
+  *
+  */
 exports.list = function(req, res, next) {
     User.find({}, function(err, users) {
       if (err) {
@@ -28,43 +35,63 @@ exports.list = function(req, res, next) {
     });
 };
 
+/**
+  *
+  *
+  */
 exports.read = function(req, res) {
     res.json(req.user);
 };
 
+/**
+  *
+  *
+  */
 exports.userByID = function(req, res, next, id) {
     User.findOne({
       _id: id
     }, function(err, user) {
-	      if (err) {
-	        return next(err);
-	      } else {
-	        req.user = user;
-	        next();
-	      } 
+        if (err) {
+          return next(err);
+        } else {
+          req.user = user;
+          next();
+        } 
      });
 };
 
+/**
+  *
+  *
+  */
 exports.update = function(req, res, next) {
     User.findByIdAndUpdate(req.user.id, req.body, function(err, user) {
-    	if (err) {
-	     return next(err);
-	    } else {
-	     res.json(user);
-	    } 
-	});
+      if (err) {
+       return next(err);
+      } else {
+       res.json(user);
+      } 
+  });
 };
 
+/**
+  *
+  *
+  */
 exports.deleter = function(req, res, next) {
     req.user.remove(function(err) {
-	    if (err) {
-		 return next(err);
-		} else {
-		    res.json(req.user);
-		} 
-	})
+      if (err) {
+     return next(err);
+    } else {
+        res.json(req.user);
+    } 
+  })
 };
 
+/**
+  *
+  *
+  */
 var getErrorMessage = function(err) {
      var message = '';
      if (err.code) {
@@ -83,18 +110,27 @@ var getErrorMessage = function(err) {
      }
      return message;
 };
- 
+
+/**
+  *
+  *
+  */ 
 exports.renderSignin = function(req, res, next) {
-     if (!req.user) {
-    	 res.render('signin', {
-	         title: 'Sign-in Form',
-	         messages: req.flash('error') || req.flash('info')
-    	 });
-	} else {
-		return res.redirect('/');
-	}
+    if (!req.user) {
+      res.render('signin', {
+        title: 'Sign-in Form',
+        aMessage: ['Sign-in Form'],
+        messages: req.flash('error') || req.flash('info')
+      });
+    } else {
+      return res.redirect('/');
+    }
 };
 
+/**
+  *
+  *
+  */
 exports.renderSignup = function(req, res, next) {
   if (!req.user) {
     res.render('signup', {
@@ -106,8 +142,15 @@ exports.renderSignup = function(req, res, next) {
   }
 };
 
+/**
+  *
+  *
+  */
 exports.signup = function(req, res, next) {
   if (!req.user) {
+
+    console.log("ID:112 :: users.server.controller :: signup() ");
+
     var user = new User(req.body);
     var message = null;
     user.provider = 'local';
@@ -123,53 +166,78 @@ exports.signup = function(req, res, next) {
       }); 
     });
   } else {
-	  return res.redirect('/');
+    return res.redirect('/');
   } 
 };
 
+/**
+  *
+  *
+  */
 exports.signout = function(req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect('/signin');
 };
 
+/**
+  *
+  *
+  */
 exports.saveOAuthUserProfile = function(req, profile, done) {
     User.findOne({
       provider: profile.provider,
       providerId: profile.providerId
     }, function(err, user) {
-    	if (err) {
-    		return done(err);
-    	} else {
-    		if (!user) {
-	    		var possibleUsername = profile.username ||
-	    									((profile.email) ? profile.email.split('@')[0] : '');
-		        
-	    		User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
-		          profile.username = availableUsername;
-		          user = new User(profile);
-		          user.save(function(err) {
-		            if (err) {
-		              var message = _this.getErrorMessage(err);
-		              req.flash('error', message);
-		              return res.redirect('/signup');
-		            }
-		            return done(err, user);
-		          });
-	    		});
-    		} else {
-    			return done(err, user);
-    		}
-    	} 
+      if (err) {
+        return done(err);
+      } else {
+        if (!user) {
+          var possibleUsername = profile.username ||
+                        ((profile.email) ? profile.email.split('@')[0] : '');
+            
+          User.findUniqueUsername(possibleUsername, null, function(availableUsername) {
+              profile.username = availableUsername;
+              user = new User(profile);
+              user.save(function(err) {
+                if (err) {
+                  var message = _this.getErrorMessage(err);
+                  req.flash('error', message);
+                  return res.redirect('/signup');
+                }
+                return done(err, user);
+              });
+          });
+        } else {
+          return done(err, user);
+        }
+      } 
     });
 };
 
+/**
+  *
+  *
+  */
 exports.requiresLogin = function(req, res, next) {
     if (!req.isAuthenticated()) {
       return res.status(401).send({
         message: 'User is not logged in'
       }); 
     }
-	next(); 
+  next(); 
+};
+
+/**
+  *
+  *
+  */
+exports.isAuthenticated = function(req, res, next) {
+    if (!req.isAuthenticated()) { 
+      return res.status(401).send({
+        message: 'User is not logged in'
+      }); 
+    }
+  next(); 
 };
 
 
