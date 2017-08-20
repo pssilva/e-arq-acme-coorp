@@ -289,98 +289,122 @@ exports.loadComponenteDidital = function(req, res) {
 exports.loadDocumento = function(req, res, next) {
 
     var randomNumberClass = Math.floor(Math.random() * 15);
-    var classeObject = Classe.find({"classe_nome": "classe_nome - "+randomNumberClass});
+    Classe.find({"classe_nome": "classe_nome - "+randomNumberClass}, function(err, classes){
+         var i = "Dossiê - 1";
+          var DocDossie = new Documento({
+              "id_doc": "id_doc - " +i, //Identificador do documento
+              "num_doc": "num_doc - i " +i, //Número do documento
+              "num_prot": "num_prot - i " +i, //Número do protocolo
+              "id_processo": "id_processo - i " +i, //Identificador do processo/dossiê
+              "num_processo": "num_processo - i " +i, //Número do processo/dossiê
+              "id_volume": "id_volume - i " +i, //Identificador do volume
+              "num_volume": "num_volume - i " +i, //Número do volume
+              "tipo_meio": "tipo_meio - i " +i, //Tipo de meio
+              "status": "status - i " +i, //Status
+              "id_version": "id_version - i " +i, //Identificador de versão
+              "titulo": "titulo - i " +i, //Título
+              "descricao": "descricao - i " +i, //Descrição
+              "assunto": "assunto - i " +i, //Assunto
+              "autor": "autor - i " +i, //Autor
+              "destinatario": "destinatario - i " +i, //Destinatário
+              "originador": "originador - i " +i, //originador
+              "redator": "redator - i " +i, //Redator
+              "interessado": "interessado - i " +i, //Interessado
+              "procedencia": "procedencia - i " +i, //Procedência
+              "genero": "genero - i " +i,   //Gênero
+              "especie": "especie - i " +i, //Espécie
+              "tipo_doc": "tipo_doc - i " +i, //Tipo
+              "idiome": "idiome - i " +i,  //Idioma
+              "qtd_folhas": "qtd_folhas - i " +i, //Quantidade de folhas/página
+              "num_sequencia_doc": "num_sequencia_doc - i " +i, //Numeração sequencial dos documentos
+              "indicacao_anexo": "indicacao_anexo - i " +i, //Indicação de anexos
+              "relacao_doc": "relacao_doc - i " +i,  //Relação com outros documentos
+              "niveis_acesso": "niveis_acesso - i " +i,  //Níveis de acesso
+              "classe_id": classes.id,//"classe_id - i " +i, //Classe
+              "destinacao_prev": "destinacao_prev - i " +i, //Destinação prevista
+              "prazo_guarda": "prazo_guarda - i " +i, //Prazo de guarda
+              "localizacao": "localizacao - i " +i, //localização
+          });
 
-    var i = "Dossiê - 1";
-    var DocDossie = new Documento({
-        "id_doc": "id_doc - " +i, //Identificador do documento
-        "num_doc": "num_doc - i " +i, //Número do documento
-        "num_prot": "num_prot - i " +i, //Número do protocolo
-        "id_processo": "id_processo - i " +i, //Identificador do processo/dossiê
-        "num_processo": "num_processo - i " +i, //Número do processo/dossiê
-        "id_volume": "id_volume - i " +i, //Identificador do volume
-        "num_volume": "num_volume - i " +i, //Número do volume
-        "tipo_meio": "tipo_meio - i " +i, //Tipo de meio
-        "status": "status - i " +i, //Status
-        "id_version": "id_version - i " +i, //Identificador de versão
-        "titulo": "titulo - i " +i, //Título
-        "descricao": "descricao - i " +i, //Descrição
-        "assunto": "assunto - i " +i, //Assunto
-        "autor": "autor - i " +i, //Autor
-        "destinatario": "destinatario - i " +i, //Destinatário
-        "originador": "originador - i " +i, //originador
-        "redator": "redator - i " +i, //Redator
-        "interessado": "interessado - i " +i, //Interessado
-        "procedencia": "procedencia - i " +i, //Procedência
-        "id_componente": "id_componente - i " +i,  //Identificador do componente digital
-        "genero": "genero - i " +i,   //Gênero
-        "especie": "especie - i " +i, //Espécie
-        "tipo_doc": "tipo_doc - i " +i, //Tipo
-        "idiome": "idiome - i " +i,  //Idioma
-        "qtd_folhas": "qtd_folhas - i " +i, //Quantidade de folhas/página
-        "num_sequencia_doc": "num_sequencia_doc - i " +i, //Numeração sequencial dos documentos
-        "indicacao_anexo": "indicacao_anexo - i " +i, //Indicação de anexos
-        "relacao_doc": "relacao_doc - i " +i,  //Relação com outros documentos
-        "niveis_acesso": "niveis_acesso - i " +i,  //Níveis de acesso
-        "classe_id": classeObject.id,//"classe_id - i " +i, //Classe
-        "destinacao_prev": "destinacao_prev - i " +i, //Destinação prevista
-        "prazo_guarda": "prazo_guarda - i " +i, //Prazo de guarda
-        "localizacao": "localizacao - i " +i, //localização
+          DocDossie.save(function(err) {
+            if (err) {
+              console.log("ID:264 :: Documento() :: i = " + i );
+              console.log(err);
+            }
+          });
     });
 
-    DocDossie.save(function(err) {
-      if (err) {
-        console.log("ID:264 :: Documento() :: i = " + i );
-        console.log(err);
-      }
-    });
-
-    for (var i = 100; i > 0; i--) {
+    
       randomNumberClass = Math.floor(Math.random() * 15);
-      classeObject = Classe.find({"classe_nome": "classe_nome - "+randomNumberClass});
-      var documento = new Documento({
-          "id_doc": "id_doc - i " +i, //Identificador do documento
-          "num_doc": "num_doc - i " +i, //Número do documento
-          "num_prot": "num_prot - i " +i, //Número do protocolo
-          "id_processo": "id_processo - i " +i, //Identificador do processo/dossiê
-          "num_processo": "num_processo - i " +i, //Número do processo/dossiê
-          "id_volume": "id_volume - i " +i, //Identificador do volume
-          "num_volume": "num_volume - i " +i, //Número do volume
-          "tipo_meio": "tipo_meio - i " +i, //Tipo de meio
-          "status": "status - i " +i, //Status
-          "id_version": "id_version - i " +i, //Identificador de versão
-          "titulo": "titulo - i " +i, //Título
-          "descricao": "descricao - i " +i, //Descrição
-          "assunto": "assunto - i " +i, //Assunto
-          "autor": "autor - i " +i, //Autor
-          "destinatario": "destinatario - i " +i, //Destinatário
-          "originador": "originador - i " +i, //originador
-          "redator": "redator - i " +i, //Redator
-          "interessado": "interessado - i " +i, //Interessado
-          "procedencia": "procedencia - i " +i, //Procedência
-          "id_componente": "id_componente - i " +i,  //Identificador do componente digital
-          "genero": "genero - i " +i,   //Gênero
-          "especie": "especie - i " +i, //Espécie
-          "tipo_doc": "tipo_doc - i " +i, //Tipo
-          "idiome": "idiome - i " +i,  //Idioma
-          "qtd_folhas": "qtd_folhas - i " +i, //Quantidade de folhas/página
-          "num_sequencia_doc": "num_sequencia_doc - i " +i, //Numeração sequencial dos documentos
-          "indicacao_anexo": "indicacao_anexo - i " +i, //Indicação de anexos
-          "relacao_doc": "relacao_doc - i " +i,  //Relação com outros documentos
-          "niveis_acesso": "niveis_acesso - i " +i,  //Níveis de acesso
-          "classe_id": classeObject.id, //"classe_id - i " +i, //Classe
-          "destinacao_prev": "destinacao_prev - i " +i, //Destinação prevista
-          "prazo_guarda": "prazo_guarda - i " +i, //Prazo de guarda
-          "localizacao": "localizacao - i " +i, //localização
-      });
+      Classe.find({"classe_nome": "classe_nome - "+randomNumberClass}, function(err, classes){
+         if (err) return;
+         for (var i = 100; i >=1; i--) {
+            var componenteDigital = new ComponenteDigital({ 
+              "id_comp_digital": "id_comp_digital - " + i, //Identificador do componente digital
+              "nome_oficial": "nome_oficial - " + i, //Nome original
+              "caracteristica_tecnica": "caracteristica_tecnica", //Características técnicas
+              "formato_arquivo": "formato_arquivo", //formato de arquivo
+              "armazenamento": "armazenamento", //Armazenamento
+              "ambiente_software": "ambiente_software", //Ambiente de software
+              "ambiente_hardware": "ambiente_hardware", //Ambiente de hardware
+              "dependendias": "dependendias", //Dependências
+              "relacao_comp_digital": "relacao_comp_digital", //Relação com outros componentes digitais
+              "fixidade": "fixidade", //fixidade
+            }); 
 
-      documento.save(function(err) {
-        if (err) {
-          console.log("ID:356 :: Documento() :: i = " + i );
-          console.log(err);
-        }
-      });
-    };
+            componenteDigital.save(function(err) {
+              if (err) {
+                console.log("ID:400 :: ComponenteDigital() :: i = " + i );
+                console.log(err);
+              }
+            });
+
+            var documento = new Documento({
+                "id_doc": "id_doc - i " +i, //Identificador do documento
+                "num_doc": "num_doc - i " +i, //Número do documento
+                "num_prot": "num_prot - i " +i, //Número do protocolo
+                "id_processo": "id_processo - i " +i, //Identificador do processo/dossiê
+                "num_processo": "num_processo - i " +i, //Número do processo/dossiê
+                "id_volume": "id_volume - i " +i, //Identificador do volume
+                "num_volume": "num_volume - i " +i, //Número do volume
+                "tipo_meio": "tipo_meio - i " +i, //Tipo de meio
+                "status": "status - i " +i, //Status
+                "id_version": "id_version - i " +i, //Identificador de versão
+                "titulo": "titulo - i " +i, //Título
+                "descricao": "descricao - i " +i, //Descrição
+                "assunto": "assunto - i " +i, //Assunto
+                "autor": "autor - i " +i, //Autor
+                "destinatario": "destinatario - i " +i, //Destinatário
+                "originador": "originador - i " +i, //originador
+                "redator": "redator - i " +i, //Redator
+                "interessado": "interessado - i " +i, //Interessado
+                "procedencia": "procedencia - i " +i, //Procedência
+                "id_componente": componenteDigital.id,//Identificador do componente digital
+                "genero": "genero - i " +i,   //Gênero
+                "especie": "especie - i " +i, //Espécie
+                "tipo_doc": "tipo_doc - i " +i, //Tipo
+                "idiome": "idiome - i " +i,  //Idioma
+                "qtd_folhas": "qtd_folhas - i " +i, //Quantidade de folhas/página
+                "num_sequencia_doc": "num_sequencia_doc - i " +i, //Numeração sequencial dos documentos
+                "indicacao_anexo": "indicacao_anexo - i " +i, //Indicação de anexos
+                "relacao_doc": "relacao_doc - i " +i,  //Relação com outros documentos
+                "niveis_acesso": "niveis_acesso - i " +i,  //Níveis de acesso
+                "classe_id": classes.id, //"classe_id - i " +i, //Classe
+                "destinacao_prev": "destinacao_prev - i " +i, //Destinação prevista
+                "prazo_guarda": "prazo_guarda - i " +i, //Prazo de guarda
+                "localizacao": "localizacao - i " +i, //localização
+            });
+
+            documento.save(function(err) {
+              if (err) {
+                console.log("ID:356 :: Documento() :: i = " + i );
+                console.log(err);
+              }
+            });
+
+          };//Fecha o loop for
+       });
+      
     next();
 };
 
@@ -422,7 +446,7 @@ exports.loadAluguel = function(req, res){
     if (!err) {  
       ag.exec(function(err, agentes) {
         if (!err) { 
-            for (var i = 45; i >= 0; i--) {
+            for (var i = 45; i >=1; i--) {
                 var randomNumber = Math.floor(Math.random() * 45);
                 var aluquel = new Aluguel({
                   "agente_id": agentes[randomNumber].id, //Agente
@@ -436,7 +460,7 @@ exports.loadAluguel = function(req, res){
   });
 
   contentStr = [];
-  contentStr.push("Carregar os dados de Agentes: loadAgente");
+  contentStr.push("Carregar os dados de Aluguel: loadAluguel");
   res.status(res.statusCode) 
     .render('suporte_mongose', { 
         pathTheme: 'AdminLTE', 
@@ -449,26 +473,30 @@ exports.loadAluguel = function(req, res){
 
 exports.loadAvaliacao = function(req, res){ 
 
-  Aluguel.find({}, function(err, alugueis){
-    if(!err){ 
-      for (var i = alugueis.length - 1; i >= 0; i--) {
-        var randomNumberConservacao = Math.floor(Math.random() * 4);
-        var randomNumberNotaConteudo = Math.floor(Math.random() * 10);
-        var alugel = alugueis[i];
+  Aluguel.find({}) 
+    .populate('documento_id') 
+    .populate('agente_id') 
+    .exec(function(err, alugueis){
+      if(!err){ 
+        for (var i = alugueis.length - 1; i >= 0; i--) {
+          var randomNumberConservacao = Math.floor(Math.random() * 4);
+          var randomNumberNotaConteudo = Math.floor(Math.random() * 10);
+          var alugel = alugueis[i];
 
-        var avaliacao = new Avaliacao({ 
-            "aluguel_id": alugel.id, //Agente
-            "conservacao": randomNumberConservacao,
-            "nota_conteudo": randomNumberNotaConteudo, //Nota Conteudo
-            "observacao": "Dados de teste: " + Date.now,//Observação
-            createdBy: alugueis[i].agente_id//Crated By - Criado por
-        });
+          var avaliacao = new Avaliacao({ 
+              "aluguel_id": alugel.id, //Agente
+              "componente_digital_id": alugel.documento_id.id_componente,
+              "conservacao": randomNumberConservacao,
+              "nota_conteudo": randomNumberNotaConteudo, //Nota Conteudo
+              "observacao": "Dados de teste: " + Date.now,//Observação
+              createdBy: alugueis[i].agente_id//Crated By - Criado por
+          });
 
-        avaliacao.save();
+          avaliacao.save();
 
-      };
-    }
-  });
+        };
+      }
+    });
 
   contentStr = [];
   contentStr.push("Carregar os dados de Avaliação: loadAvaliacao");

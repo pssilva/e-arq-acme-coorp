@@ -1,0 +1,142 @@
+<!-- Select2 -->
+<script src="/public/plugins/select2-4.0.3/dist/js/select2.full.min.js"></script>
+<script src="/public/plugins/select2-4.0.3/dist/js/i18n/pt-BR.js"></script>
+
+<!-- InputMask -->
+<script src="/<%= pathTheme %>/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/<%= pathTheme %>/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/<%= pathTheme %>/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/<%= pathTheme %>/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="/<%= pathTheme %>/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/<%= pathTheme %>/plugins/iCheck/icheck.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="/<%= pathTheme %>/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- CK Editor -->
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+<!-- Ion Slider -->
+<script src="/<%= pathTheme %>/plugins/ionslider/ion.rangeSlider.min.js"></script>
+<!-- Bootstrap slider -->
+<script src="/<%= pathTheme %>/plugins/bootstrap-slider/bootstrap-slider.js"></script>
+<script>
+  $(function () {
+    /* BOOTSTRAP SLIDER */
+    $('.slider').slider();
+
+    $("#nota_conteudo").ionRangeSlider({
+      min: 0,
+      max: 10,
+      type: 'single',
+      step: 1,
+      postfix: " pt"
+    });
+    
+  });
+</script>
+
+<script>
+  $(function () { 
+    // Replace the <textarea id="observacao"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace('observacao');
+  }); 
+</script>
+
+<!-- Page script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $("#componente_digital_id").select2({
+       placeholder: {
+          id: '-1', // the value of the option
+          text: 'Selecione um livro ...'
+        },
+        language: "pt-BR",
+        ajax: {
+          url: '/avaliacao/api/v1/livros',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            console.log("ID:28 :: script-form :: data");
+            console.log(data);
+            return {
+              results: data
+            };
+          }
+        }
+    });
+
+    //Initialize Select2 Elements
+    $("#conservacao").select2({
+       placeholder: {
+          id: '-1', // the value of the option
+          text: 'Selecione...'
+        },
+        language: "pt-BR"
+    });
+
+    //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //Date range picker
+    $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+
+    //Colorpicker
+    $(".my-colorpicker1").colorpicker();
+    //color picker with addon
+    $(".my-colorpicker2").colorpicker();
+
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  });
+</script>

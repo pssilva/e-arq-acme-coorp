@@ -94,6 +94,8 @@ exports.signup = function(req, res, next) {
   *
   */
 exports.signout = function(req, res) {
+    req.user = null;
+    req.session.isAuthenticated = false;
     req.logout();
     res.redirect('/admin/signin/');
 };
@@ -138,6 +140,7 @@ exports.login = function(req, res, next) {
               console.log('good');
               if (err) { return next(err); }
               req.user = user;
+              req.session.isAuthenticated = true;
               return res.render('index', 
                   {
                       title: 'AdminLTE',

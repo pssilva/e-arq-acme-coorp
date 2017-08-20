@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../../../../core/server/views/pages/head %>
+  <% include ../../../../core/server/views/pages/head-datatable %>
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+
+  <div class="wrapper">
+
+    <% include ../../../../avaliacao/server/views/pages/header %>
+    <% include ../../../../avaliacao/server/views/pages/aside %>
+
+
+     <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Tabela Listagem: 
+        <small>Avaliação</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Avaliação</a></li>
+        <li class="active">Listagem</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <% if(aMessage){ 
+          for(var i in aMessage) {  %>
+            <div class="alert alert-success alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4><i class="icon fa fa-check"></i> Alert!</h4>
+              <%= aMessage[i] %>
+            </div>
+      <%  } 
+        } 
+      %>
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+               <table id="tbAvaliacoes" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th align="center" style="text-align: center;" >Conservação</th>
+                    <th align="center" style="width: 185px; text-align: center;">Nota Conteúdo</th>
+                    <th>Observação</th>
+                    <th align="center" style="width: 80px; text-align: center;">Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <% avaliacoes.forEach(function(avaliacoes) { %>
+                      <tr 
+                          id="<%= avaliacoes.id %>" 
+                          data-id="<%= avaliacoes.id %>" 
+                          data-nota_conteudo="<%= avaliacoes.nota_conteudo %>" 
+                          data-conservacao="<%= avaliacoes.conservacao %>" 
+                          data-conservacao_label="<%= avaliacoes.conservacao_label %>" 
+                          data-observacao="<%= avaliacoes.observacao %>" 
+                          data-aluguel_id="<%= avaliacoes.aluguel_id %>" 
+                          data-createdBy="<%= avaliacoes.createdBy %>" 
+                      >
+                        <td style="text-align: center;"  ><%= avaliacoes.conservacao_label %></td>
+                        <td style="text-align: center;" >
+                          <% for (var i = 0; i < avaliacoes.nota_conteudo; i++) { %>
+                              <i class="fa fa-fw fa-star"></i>
+                          <% } %>
+                        </td>
+                        <td><%= avaliacoes.observacao %></td>
+                        <td style="text-align: center;" >
+                            <a href="/avaliacao/view/<%= avaliacoes._id %>">
+                              <i class="fa fa-fw fa-eye"></i>
+                            </a>
+                            <a href="/avaliacao/edit/<%= avaliacoes._id %>">
+                              <i class="fa fa-fw fa-edit"></i>
+                            </a>
+                            <a href="/avaliacao/delete/<%= avaliacoes._id %>">
+                              <i class="fa fa-fw fa-trash"></i>
+                            </a>
+                        </td>
+                      </tr>
+                  <% }); %>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Conservação</th>
+                    <th>Nota Conteúdo</th>
+                    <th>Observação</th>
+                    <th>Ações</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+
+
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+    <% include ../../../../core/server/views/pages/main-footer %>
+    <% include ../../../../core/server/views/pages/control-sidebar %>
+
+  </div>
+  <!-- ./wrapper -->
+  <% include ../../../../avaliacao/server/views/pages/script %>
+  <% include ../../../../avaliacao/server/views/pages/script-datatable %>
+
+</body>
+</html>

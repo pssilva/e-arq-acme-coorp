@@ -10,7 +10,9 @@ var config = require('./config'),
     compress = require('compression'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    flash = require('connect-flash');
+    flash = require('connect-flash'),
+    passport = require('passport'),
+    favicon = require('serve-favicon');
 
 module.exports = function(db) {
     var app = express();
@@ -34,7 +36,15 @@ module.exports = function(db) {
     app.set('views', './app/avaliacao/server/views');
     app.set('view engine', 'ejs');
 
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+
+    
+    app.use(favicon(path.join('cropped-favicon-min-32x32.png')))
+
     app.use(flash());
+    require('../routers/users.server.routers')(app);
     require('../routers/index.server.routers')(app);
     require('../routers/avaliacao.server.routers')(app);
     /**#autoInsertRequire#*/

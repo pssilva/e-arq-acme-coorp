@@ -4,12 +4,14 @@
  * 
  */
 var config = require('./config'),
-    options = { useMongoClient: true, promiseLibrary: require('bluebird')}, 
+    options = {useMongoClient: true, promiseLibrary: require('bluebird')}, 
     mongoose = require('mongoose');
 
 module.exports = function() {
-    
+
     var db = mongoose.connection.openUri(config.db, options);
+
+    /** Models de Avaliação da aplicação. */
     require('../../../avaliacao/server/models/agente.server.model');
     require('../../../avaliacao/server/models/classe.server.model');
     require('../../../avaliacao/server/models/classe_temporalidade.server.model');
@@ -17,7 +19,9 @@ module.exports = function() {
     require('../../../avaliacao/server/models/documento.server.model');
     require('../../../avaliacao/server/models/evento_gestao.server.model');
     require('../../../avaliacao/server/models/evento_prestacao.server.model');
-    
+    require('../../../avaliacao/server/models/aluguel.server.model');
+    require('../../../avaliacao/server/models/avaliacao.server.model');
+
     require('../../../core/server/models/user.server.model');
     /**#autoInsertRequire#*/
 

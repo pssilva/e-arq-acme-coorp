@@ -18,5 +18,3 @@ var db = mongoose(),
    app.listen(3045);
    console.log('Server running at http://localhost:3045/');
    module.exports = app;
-
-

@@ -8,7 +8,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var avaliacaoSchema = new Schema({ 
-    "aluguel_id": { type: mongoose.Schema.Types.ObjectId, ref: 'Aluguel'}, //Agente
+    "aluguel_id": { type: mongoose.Schema.Types.ObjectId, ref: 'Aluguel'}, //Agente 
+    "componente_digital_id": { type: mongoose.Schema.Types.ObjectId, ref: 'ComponenteDigital'}, //ComponenteDigital 
     "conservacao": { 
         type: Number, 
         enum: ['1 - Ruim', '2 - Regular','3 - Bom', '4 - Ótimo'], 

@@ -4,3 +4,29 @@
 div.login-logo > a > img {
 	width: 330px;
 }
+
+.skin-blue .main-header .navbar {
+    background-color: #344b80 !important;
+}
+
+.skin-blue .main-header .logo {
+    background-color: #344b80 !important;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+.skin-blue .main-header li.user-header {
+    background-color: #344b80 !important;
+}
+
+.nota_conteudo-container {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    vertical-align: middle;
+}
+
+.fa-fw.fa-star {
+    color: gold;
+}

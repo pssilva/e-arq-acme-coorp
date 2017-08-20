@@ -18,6 +18,7 @@
  *
  */
 var mongoose = require('mongoose'),
+    componenteDigitalSchema = require('./componente_digital.server.model'),
     Schema = mongoose.Schema;
 
 var documentoSchema = new Schema({
@@ -40,7 +41,10 @@ var documentoSchema = new Schema({
     "redator": {type: String},   //Redator
     "interessado": {type: String},   //Interessado
     "procedencia": {type: String},   //Procedência
-    "id_componente": {type: String, required: true},   //Identificador do componente digital
+    "id_componente": {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ComponenteDigital'
+    },  //Identificador do componente digital
     "genero": {type: String, required: true},   //Gênero
     "especie": {type: String},   //Espécie
     "tipo_doc": {type: String},   //Tipo
@@ -55,6 +59,7 @@ var documentoSchema = new Schema({
     "destinacao_prev": {type: String},   //Destinação prevista
     "prazo_guarda": {type: String},   //Prazo de guarda
     "localizacao": {type: String},   //localização
+    "componente_digital": [componenteDigitalSchema],
     "createdBy": {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

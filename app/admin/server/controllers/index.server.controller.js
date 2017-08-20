@@ -6,9 +6,12 @@
   */
 var UserControll = require('./users.server.controller');
 
+/**
+  *
+  */
 exports.render = function(req, res) {
     
-    console.log("ID:12 :: Admin ::index.server.controller ");
+    console.log("ID:12 :: Avaliação ::index.server.controller ");
 
     if (req.session.lastVisit) {
         console.log("ID:11 :: index.server.controller: " + req.session.lastVisit);
@@ -17,7 +20,7 @@ exports.render = function(req, res) {
     req.session.lastVisit = new Date();
     
     if (req.user) {
-      console.log("ID:21 :: Admin ::index.server.controller ");
+      console.log("ID:21 :: Avaliação ::index.server.controller ");
       console.log("req.user");
       console.log(req.user);
     }
@@ -26,8 +29,8 @@ exports.render = function(req, res) {
       res.status(res.statusCode)
          .render('index',{
              pathTheme: 'AdminLTE',
-             title: ':: Site Administrativo :: Controller',
-             aMessage: ['Conteúdo da página Index Admin'],
+             title: ':: Site Avaliação :: Controller',
+             aMessage: ['Conteúdo da página Index Avaliação'],
              user: JSON.stringify(req.user)
          });
     });

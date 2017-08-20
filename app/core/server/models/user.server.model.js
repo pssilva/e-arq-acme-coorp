@@ -8,41 +8,41 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-     firstName: String,
-     lastName: String, 
-     email: {
-        type: String,
-        index: true,
-        match: /.+\@.+\..+/
-     },
-     role: {
-        type: String,
-        enum: ['Admin', 'Owner', 'User', 'Public'],
-        "default": "Public"
-     },
-     username: { 
-        type: String, 
-        trim: true,
-        unique: true,
-        required: true,
-        default: "public@localhost"
-     },
-     password: {
-        type: String,
-        validate: [
-            function(password) {
-                return password && password.length > 6;
-            }, 
-            'Password should be longer'
-        ]
-     }, 
-      salt: {
-        type: String
-      },
-      provider: {
+         firstName: String,
+         lastName: String, 
+         email: {
             type: String,
-            required: 'Provider is required'
-      },
+            index: true,
+            match: /.+\@.+\..+/
+         },
+         role: {
+            type: String,
+            enum: ['Admin', 'Owner', 'User', 'Public'],
+            "default": "Public"
+         },
+         username: { 
+            type: String, 
+            trim: true,
+            unique: true,
+            required: true,
+            default: "public@localhost"
+         },
+         password: {
+            type: String,
+            validate: [
+                function(password) {
+                    return password && password.length > 6;
+                }, 
+                'Password should be longer'
+            ]
+         }, 
+          salt: {
+            type: String
+          },
+          provider: {
+                type: String,
+                required: 'Provider is required'
+          },
         providerId: String,
         providerData: {},
         created: {
