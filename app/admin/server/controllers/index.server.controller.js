@@ -48,7 +48,6 @@ exports.dashboard = function(req, res) {
 
   Avaliacao.aggregate([ 
           { 
-           // $sort: {nota_conteudo: 1},
             $group: { 
               _id: '$nota_conteudo', 
               count: {$sum: 1} 
@@ -94,15 +93,8 @@ exports.dashboard = function(req, res) {
                    dataDashbaord: result, 
                    user: req.user // JSON.stringify(req.user)
                 });
-
         }); 
-
   }); 
-
- 
-
-
-
 };
 
 /** 
