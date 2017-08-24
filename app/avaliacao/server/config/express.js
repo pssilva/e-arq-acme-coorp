@@ -3,7 +3,7 @@
  */
 var config = require('./config'),
     path = require('path'),
-    fs = require('fs')
+    fs = require('fs'),
     express = require('express'),
     session = require('express-session'),
     morgan = require('morgan'),
@@ -39,9 +39,7 @@ module.exports = function(db) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-
-    
-    app.use(favicon(path.join('cropped-favicon-min-32x32.png')))
+    app.use(favicon(path.join('favicon.ico')))
 
     app.use(flash());
     require('../routers/users.server.routers')(app);

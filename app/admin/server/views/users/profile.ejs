@@ -3,7 +3,7 @@
 <head>
   <% include ../../../../core/server/views/pages/head %>
 </head>
-<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
   <% include ../../../../core/server/views/pages/header %>
@@ -38,10 +38,10 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width: 110px;" >Nome</th>
-                    <th style="width: 110px;" >Sobreno</th>
-                    <th style="width: 110px; text-align: center;" >email</th>
-                    <th style="width: 45px; text-align: center;" >Ações</th>
+                    <th>Nome</th>
+                    <th>Sobreno</th>
+                    <th>email</th>
+                    <th>Ações</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -50,17 +50,7 @@
                         <td><%= UserList.firstName %></td>
                         <td><%= UserList.lastName %></td>
                         <td><%= UserList.email %></td>
-                        <td style="text-align: center;" >
-                            <a href="/admin/users/view/<%= UserList._id %>">
-                              <i class="fa fa-fw fa-eye"></i>
-                            </a>
-                            <a href="/admin/users/edit/<%= UserList._id %>">
-                              <i class="fa fa-fw fa-edit"></i>
-                            </a>
-                            <a href="/admin/users/delete/<%= UserList._id %>">
-                              <i class="fa fa-fw fa-trash"></i>
-                            </a>
-                        </td>
+                        <td>X</td>
                       </tr>
                   <% }); %>
                 </tbody>

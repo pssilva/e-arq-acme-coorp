@@ -103,14 +103,17 @@ exports.signout = function(req, res) {
 /**
   *
   */
-exports.read = function(req, res) {
+exports.read = function(req, res) { 
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
      res.json(req.user);
 };
 
 /**
   *
   */
-exports.userByID = function(req, res, next, id) {
+exports.userByID = function(req, res, next, id) { 
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
      User.findOne({
        _id: id
      }, 
@@ -132,23 +135,16 @@ exports.login = function(req, res, next) {
     passport.authenticate('local', function (err, user, info) {
          if (err) { return next(err) }
          if (!user) {
-              console.log('bad');
-              req.session.messages = [info.message];
-              return res.redirect('/admin/signin')
-         }
-         req.logIn(user, function (err) {
-              console.log('good');
-              if (err) { return next(err); }
-              req.user = user;
-              req.session.isAuthenticated = true;
-              return res.render('index', 
-                  {
-                      title: 'AdminLTE',
-                      aMessage: [],
-                      pathTheme: '/AdminLTE'
-                  });
-         });
-    })(req, res, next);
+              req.session.messages = [info.message]; 
+              return res.redirect('/admin/signin'); 
+         } 
+         req.logIn(user, function (err) { 
+            if (err) { return next(err); } 
+            req.user = user; 
+            req.session.isAuthenticated = true; 
+            return res.redirect('/admin/dashboard'); 
+         }); 
+    })(req, res, next); 
 
 };
 
@@ -156,6 +152,7 @@ exports.login = function(req, res, next) {
   *
   */
 exports.create = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
 
     var user = new User(req.body);
     user.save(function(err) {
@@ -188,17 +185,23 @@ exports.isAuthenticated = function(req, res, next) {
   *
   */
 exports.index = function(req, res, next) {
-    User.find({}, function(err, users) {
+
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
+
+ 
+
+    User.find({},function(err, users) {
       if (err) {
          return next(err);
       } else {
-         return res.status(res.statusCode)
+         res.status(res.statusCode)
            .render('users/index',{
               title: 'Listagem de Usuários',
               pathTheme: 'AdminLTE',
               aMessage: ['Conteúdo da página Index Admin'],
               UserList: users,
-              user: JSON.stringify(req.users)
+              user: req.user //JSON.stringify(req.user)
            });
       } 
     });
@@ -207,7 +210,30 @@ exports.index = function(req, res, next) {
 /**
   *
   */
+exports.profile = function(req, res, next) { 
+    if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
+    User.find({}, function(err, users) { 
+      if (err) { 
+         return next(err); 
+      } else { 
+        res.status(res.statusCode)
+           .render('users/profile',{ 
+              title: 'Profile de Usuário', 
+              pathTheme: 'AdminLTE', 
+              aMessage: ['Conteúdo da página profile Admin'], 
+              UserList: users, 
+              user: req.user//JSON.stringify(req.user) 
+           }); 
+      } 
+    }); 
+};
+
+/**
+  *
+  */
 exports.list = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
     User.find({}, function(err, users) {
       if (err) {
          return next(err);
@@ -215,6 +241,75 @@ exports.list = function(req, res, next) {
          res.json(users);
       } 
     });
+};
+
+/**
+  *
+  */
+exports.view = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
+    User.find({}, function(err, users) { 
+      if (err) { 
+         return next(err); 
+      } else { 
+         res.status(res.statusCode) 
+           .render('users/index',{ 
+              title: 'View de Usuários', 
+              pathTheme: 'AdminLTE', 
+              aMessage: ['Trabalho em progresso: view()'], 
+              UserList: users, 
+              user: req.user //JSON.stringify(req.user) 
+           }); 
+      } 
+    }); 
+    
+};
+
+/**
+  *
+  */
+exports.edit = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
+    User.find({}, function(err, users) { 
+      if (err) { 
+         return next(err); 
+      } else { 
+         res.status(res.statusCode) 
+           .render('users/index',{ 
+              title: 'Edição de Usuários', 
+              pathTheme: 'AdminLTE', 
+              aMessage: ['Trabalho em progresso: edit()'], 
+              UserList: users, 
+              user: req.user //JSON.stringify(req.user) 
+           }); 
+      } 
+    }); 
+    
+};
+
+/**
+  *
+  */
+exports.delete = function(req, res, next) {
+  if (!req.isAuthenticated()) return res.redirect('/admin/signin');
+
+    User.find({}, function(err, users) { 
+      if (err) { 
+         return next(err); 
+      } else { 
+         res.status(res.statusCode) 
+           .render('users/index',{ 
+              title: 'Listagem de Usuários', 
+              pathTheme: 'AdminLTE', 
+              aMessage: ['Trabalho em progresso: delete()'], 
+              UserList: users, 
+              user: req.user //JSON.stringify(req.user) 
+           }); 
+      } 
+    }); 
+
 };
 
 

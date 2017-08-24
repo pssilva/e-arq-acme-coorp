@@ -2,6 +2,8 @@
  * New node file
  */
 var config = require('./config'),
+    path = require('path'),
+    fs = require('fs'),
     express = require('express'),
     session = require('express-session'),
     morgan = require('morgan'),
@@ -9,7 +11,8 @@ var config = require('./config'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
     flash = require('connect-flash'),
-    passport = require('passport');
+    passport = require('passport'),
+    favicon = require('serve-favicon');
 
 module.exports = function(db) {
     var app = express();
@@ -35,6 +38,8 @@ module.exports = function(db) {
 
     app.use(passport.initialize());
     app.use(passport.session());
+    
+    app.use(favicon(path.join('favicon.ico')))
 
     app.use(flash());
     

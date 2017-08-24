@@ -1,0 +1,187 @@
+<% var dtDashbaord = (dataDashbaord != undefined)? dataDashbaord : []; %>
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../../../../core/server/views/pages/head %>
+
+  <!-- Morris charts -->
+  <link rel="stylesheet" href="/<%= pathTheme %>/plugins/morris/morris.css">
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+  <div class="wrapper">
+
+    <% include ../../../../core/server/views/pages/header %>
+    <% include ../../../../admin/server/views/pages/aside %>
+
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <% for(var i in aMessage) { %>
+          <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-check"></i> Alert!</h4>
+            <%= aMessage[i] %>
+          </div>
+        <% } %>
+          
+        <!-- row -->
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- jQuery Knob -->
+            <div class="box box-solid">
+              <div class="box-header">
+                <i class="fa fa-bar-chart-o"></i>
+
+                <h3 class="box-title">Estatística Conservação - <small>Total: <%= totalAvaliacao %></small></h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="row">
+
+
+                  <% dtDashbaord.forEach(function(dtDashbaord) { %>
+                    
+                    <div class="col-xs-6 col-sm-2 text-center">
+                      <input type="text" class="knob" value="<%= dtDashbaord.count %>" data-width="<%= totalAvaliacao %>" data-height="55" data-fgColor="#3c8dbc">
+
+                      <div class="knob-label"> <%= dtDashbaord.label %></div>
+                    </div>
+                    <!-- ./col -->
+                  <% }); %>
+                  
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- jQuery Knob -->
+            <div class="box box-solid">
+              <div class="box-header">
+                <i class="fa fa-bar-chart-o"></i>
+
+                <h3 class="box-title">Estatística Nota Conteúdo - <small>Total: <%= totalAvaliacao %></small></h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-default btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-default btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <div class="row">
+
+
+                  <% NotaConteudoResult.forEach(function(NotaConteudoResult) { %>
+                    
+                    <div class="col-xs-6 col-sm-2 text-center">
+                      <input type="text" class="knobNotaConteudo" value="<%= NotaConteudoResult.count %>" data-width="<%= totalAvaliacao %>" data-height="55" data-fgColor="#3c8dbc">
+
+                      <div class="knob-label">Nota: <%= NotaConteudoResult._id %></div>
+                    </div>
+                    <!-- ./col -->
+                  <% }); %>
+                  
+                  <!-- ./col -->
+                </div>
+                <!-- /.row -->
+
+                
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+
+
+    <% include ../../../../core/server/views/pages/main-footer %>
+    <% include ../../../../core/server/views/pages/control-sidebar %>
+
+  </div>
+  <!-- ./wrapper -->
+  <% include ../../../../admin/server/views/pages/script %>
+
+  <!-- Morris.js charts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="/<%= pathTheme %>/plugins/morris/morris.min.js"></script>
+  <!-- FastClick -->
+  <script src="/<%= pathTheme %>/plugins/fastclick/fastclick.js"></script>
+  <!-- jQuery Knob -->
+  <script src="/<%= pathTheme %>/plugins/knob/jquery.knob.js"></script>
+  <!-- Sparkline -->
+  <script src="/<%= pathTheme %>/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+
+<script>
+  /* jQueryKnob */
+  $(function () {
+    $(".knobNotaConteudo").knob({
+        'min':0,
+        'max':<%= totalAvaliacao %>,
+        "cursor":false
+    }).trigger('configure',
+        {
+            'min':0,
+            'max':<%= totalAvaliacao %>,
+            "cursor":false,
+            "skin":"tron"
+    });
+
+    $(".knob").knob({
+        'min':0,
+        'max':<%= totalAvaliacao %>,
+        "cursor":false
+    }).trigger('configure',
+        {
+            'min':0,
+            'max':<%= totalAvaliacao %>,
+            "cursor":false,
+            "fgColor":"#FF0000",
+            "skin":"tron"
+    });
+  });
+ 
+</script>
+
+</body>
+</html>

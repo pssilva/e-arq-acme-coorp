@@ -22,15 +22,15 @@ process.env.SESSION_SECRET = process.env.SESSION_SECRET || 'developmentSessionSe
 //process.env.TWITTER_APP_ID = process.env.FACEBOOK_APP_ID || '??????';
 //process.env.TWITTER_APP_SECRET = process.env.FACEBOOK_APP_SECRET || '###$$$$';
 
-var mongoose = require('./app/core/server/config/mongoose'),
-	express = require('./app/core/server/config/express');
-	//passport = require('./app/core/server/config/passport');
+var mongoose = require('./mongoose'),
+	express = require('./express'),
+	passport = require('../../../core/server/config/passport');
 	
 var db = mongoose();
 var app = express();
-//var passport = passport();
+var passport = passport();
 
 
-   app.listen(3000);
-   console.log('Server running at http://localhost:3032/');
+   app.listen(3033);
+   console.log('Server running at http://localhost:3033/');
    module.exports = app;

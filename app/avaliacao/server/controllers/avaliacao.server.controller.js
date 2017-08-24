@@ -37,31 +37,32 @@ exports.index = function(req, res) {
   Avaliacao.find({}, function(err, avaliacoes){
     if(!err){
 
-      console.log("ID:40 :: avaliacao.server.controller :: index() :: avaliacoes[20]");
-      console.log(avaliacoes[20]);
-      var restultObj = [];
       for (var i = avaliacoes.length - 1; i >= 0; i--) {
-        restultObj[i] = avaliacoes[i];
-        restultObj[i].conservacao_label = conservacao(avaliacoes[i].conservacao);
+        avaliacoes[i].conservacao_label = conservacao(avaliacoes[i].conservacao);
       };
-
-
-      console.log("ID:48 :: avaliacao.server.controller :: index() :: restultObj[20]");
-      console.log(restultObj[20].conservacao_label);
-        
 
       res.status(res.statusCode)
         .render('Avaliacao/index',{
             pathTheme: 'AdminLTE',
             title: 'Listagem das Avaliações',
             aMessage: [],
-            avaliacoes: restultObj,
-            user: req.user
+            avaliacoes: avaliacoes,
+            user: req.user,
+            escape: function(html) {
+                  return String(html);
+                  // don't replace the htmls
+                  html.replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/'/g, '&#39;')
+                    .replace(/"/g, '&quot;');
+                }
         });
     }
   })
-  .populate('createdBy', 'fullName email')
-  .populate('aluguel_id');
+  .populate('aluguel_id')
+  .populate('componente_digital_id')
+  .populate('createdBy');
 
 };  
 
@@ -221,24 +222,27 @@ exports.livros = function(req, res) {
   if (!req.isAuthenticated()) return res.redirect('/avaliacao/signin');  
   params = parse(req.url, true).query;
 
-  var myQuery = ComponenteDigital.find({ 
-    $or:[
-      { "id": new RegExp(params.q, "i") },
-      { "nome_oficial": new RegExp(params.q, "i") }
-    ] 
-  });
+  var qAvaliacao = Avaliacao.find({"$not":[{createdBy:req.user._id}]});
+      qAvaliacao.exec(function function_name (avaliacoes) { 
+          var myQuery = ComponenteDigital.find({ 
+            $or:[
+              { "id": new RegExp(params.q, "i") },
+              { "nome_oficial": new RegExp(params.q, "i") }
+            ] 
+          });
 
-  myQuery.exec(function(err, componenteDigitals){ 
-    var data = [];
-    for (var i = componenteDigitals.length - 1; i >= 0; i--) {
-      var nome_oficial = componenteDigitals[i].nome_oficial;
-      data.push({ 
-        id: componenteDigitals[i].id, 
-        text: nome_oficial 
-      }); 
-    };
-    return res.json(data);
-  });
+          myQuery.exec(function(err, componenteDigitals){ 
+            var data = [];
+            for (var i = componenteDigitals.length - 1; i >= 0; i--) {
+              var nome_oficial = componenteDigitals[i].nome_oficial;
+              data.push({ 
+                id: componenteDigitals[i].id, 
+                text: nome_oficial 
+              }); 
+            };
+            return res.json(data);
+          });
+      });
 }; 
 
 var conservacao = function (iConservacao) {

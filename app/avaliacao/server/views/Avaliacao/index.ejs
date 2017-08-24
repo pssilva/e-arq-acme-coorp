@@ -58,32 +58,32 @@
                   </tr>
                 </thead>
                 <tbody>
-                   <% avaliacoes.forEach(function(avaliacoes) { %>
+                   <%  avaliacoes.forEach(function(avaliacao){ %>
+
                       <tr 
-                          id="<%= avaliacoes.id %>" 
-                          data-id="<%= avaliacoes.id %>" 
-                          data-nota_conteudo="<%= avaliacoes.nota_conteudo %>" 
-                          data-conservacao="<%= avaliacoes.conservacao %>" 
-                          data-conservacao_label="<%= avaliacoes.conservacao_label %>" 
-                          data-observacao="<%= avaliacoes.observacao %>" 
-                          data-aluguel_id="<%= avaliacoes.aluguel_id %>" 
-                          data-createdBy="<%= avaliacoes.createdBy %>" 
+                          id="<%= avaliacao._id %>" 
+                          data-id="<%= avaliacao._id %>" 
+                          data-nota_conteudo="<%= avaliacao.nota_conteudo %>" 
+                          data-conservacao="<%= avaliacao.conservacao %>" 
+                          data-observacao="<%= avaliacao.observacao %>" 
+                          data-aluguel_id="<%= avaliacao.aluguel_id %>" 
+                          data-createdBy="<%= avaliacao.createdBy %>" 
                       >
-                        <td style="text-align: center;"  ><%= avaliacoes.conservacao_label %></td>
+                        <td style="text-align: center;"  ><%= avaliacao.conservacao_label %></td>
                         <td style="text-align: center;" >
-                          <% for (var i = 0; i < avaliacoes.nota_conteudo; i++) { %>
+                          <% for (var i = 0; i < avaliacao.nota_conteudo; i++) { %>
                               <i class="fa fa-fw fa-star"></i>
                           <% } %>
                         </td>
-                        <td><%= avaliacoes.observacao %></td>
+                        <td><%= avaliacao.observacao %></td>
                         <td style="text-align: center;" >
-                            <a href="/avaliacao/view/<%= avaliacoes._id %>">
+                            <a href="/avaliacao/view/<%= avaliacao._id %>">
                               <i class="fa fa-fw fa-eye"></i>
                             </a>
-                            <a href="/avaliacao/edit/<%= avaliacoes._id %>">
+                            <a href="/avaliacao/edit/<%= avaliacao._id %>">
                               <i class="fa fa-fw fa-edit"></i>
                             </a>
-                            <a href="/avaliacao/delete/<%= avaliacoes._id %>">
+                            <a href="/avaliacao/delete/<%= avaliacao._id %>">
                               <i class="fa fa-fw fa-trash"></i>
                             </a>
                         </td>
