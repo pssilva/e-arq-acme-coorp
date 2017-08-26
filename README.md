@@ -1,7 +1,7 @@
 e-Arq Acme Coorp 
 ==============================================================
 
-Projeto prático para o processo seletivo Akite Now usando a especificação do [e-Arq](https://github.com/pssilva/e-arq-acme-coorp/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf) como base. Usando core do projeto conceito Projeto [MEAN (MongoDB, Express, AngularJS e NodeJS)](https://github.com/pssilva/projeto-mean) para reutilização de soluções coesas. E buscando atender as restrições do teste em si: [DESAFIO Acme Coorp](https://github.com/pssilva/e-arq-acme-coorp/blob/master/doc-repo/referencias/Desafio%20e-Arq%20Acme%20Coorp.pdf).
+Projeto prático para o processo seletivo para Acme Coorp usando a especificação do [e-Arq](https://github.com/pssilva/e-arq-acme-coorp/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf) como base. Usando core do projeto conceito Projeto [MEAN (MongoDB, Express, AngularJS e NodeJS)](https://github.com/pssilva/projeto-mean) para reutilização de soluções coesas. E buscando atender as restrições do teste em si: [DESAFIO Acme Coorp](https://github.com/pssilva/e-arq-acme-coorp/blob/master/doc-repo/referencias/Desafio%20e-Arq%20Acme%20Coorp.pdf).
 
 ## Objetivos Principais [Conceitos](http://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment):
 - Criar uma sistema usando as tecnologias: MongoDB, Express, AngularJS, and Node.js;
