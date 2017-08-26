@@ -54,11 +54,12 @@
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-express": "^1.4.1",
+    "grunt-express-server": "^0.5.3",
     "grunt-parallel": "^0.5.1",
     "load-grunt-tasks": "^3.5.2",
-    "time-grunt": "^1.4.0",
     "should": "~4.0.4",
-    "supertest": "~0.13.0"
+    "supertest": "~0.13.0",
+    "time-grunt": "^1.4.0"
   },
   "params": {
     "path_strutucture": "v"

@@ -12,7 +12,6 @@ var mongoose = require('mongoose'),
 
 exports.render = function(req, res) {
   console.log("ID:13 :: avaliacao.restful.server.controller.js ");
-  //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
     res.end(JSON.stringify(
@@ -22,6 +21,11 @@ exports.render = function(req, res) {
           "status": res.statusCode
         })); 
 };
+
+
+
+
+
 
 /**
   * 

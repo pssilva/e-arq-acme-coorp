@@ -18,32 +18,41 @@ module.exports = function(grunt) {
         yeoman: appConfig,
 
         pkg: grunt.file.readJSON('package.json'),
+        watch: {
+            express: {
+              files:  [ '**/*.js' ],
+              //tasks:  [ 'express:admin','express:avaliacao','express:restful' ],
+              options: {
+                spawn: false // for grunt-contrib-watch v0.5.0+, "nospawn: true" for lower versions. Without this option specified express won't be reloaded 
+              }
+            }
+        },
         express: {
+            options: {
+                livereload: true
+            },
             admin: {
-                //custom: {
                   options: {
                     port: 3034,
-                    //bases: 'www-root',
-                    server: './app/admin/server/config/server' // acessa o arquivo: server.js
+                    bases: 'app/admin',
+                    script: 'app/admin/server/config/server.js', // acessa o arquivo: server.js
+                    node_env: 'development'
                   }
-                //}
             },
             avaliacao: {
-                //custom: {
                   options: {
                     port: 3045,
-                    //bases: 'www-root',
-                    server: './app/avaliacao/server/config/server' // acessa o arquivo: server.js
+                    bases: 'app/avapliacao',
+                    script: 'app/avaliacao/server/config/server.js', // acessa o arquivo: server.js
+                    node_env: 'development'
                   }
-                //}
             },
             restful: {
-                //custom: {
                   options: {
                     port: 3034,
-                    //bases: 'www-root',
-                    server: './app/core/server/config/server_api_restful' // acessa o arquivo: server.js
-                  //}
+                    bases: 'app/core',
+                    script: 'app/core/server/config/server_api_restful.js' , // acessa o arquivo: server.js
+                    node_env: 'development'
                 }
             }
         }
@@ -55,15 +64,17 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect'); 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch'); 
+    grunt.loadNpmTasks('grunt-contrib-watch'); 
     grunt.loadNpmTasks('grunt-parallel'); 
+    grunt.loadNpmTasks('grunt-express-server');
 
     grunt.registerTask('myServer', ['express-keepalive']); 
-    grunt.registerTask('adminServer', ['express:admin:custom']); 
-    grunt.registerTask('avaliacaoServer', ['express:avaliacao:custom']); 
-    grunt.registerTask('restfulServer', ['express:restful:custom']); 
+    grunt.registerTask('adminServer', ['express:admin']); 
+    grunt.registerTask('avaliacaoServer', ['express:avaliacao']); 
+    grunt.registerTask('restfulServer', ['express:restful']); 
 
     // [4] Default task 
-    grunt.registerTask('default', ['adminServer', 'avaliacaoServer', 'restfulServer']);
+    grunt.registerTask('default', ['adminServer', 'avaliacaoServer', 'restfulServer', 'watch']);
 
 };
 
