@@ -44,12 +44,12 @@ export SESSION_SECRET=??????
 export NODE_ENV=development 
 ```
 6. Iniciar o serviço do MongoDB: `brew services start mongodb`;
-7. Start Server: `grunt`;
-7.1 Start Server Admin: `node app/admin/server/config/server.js`;
-7.2 Start Server Avaliação: `node app/avaliacao/server/config/server.js`;
-7.3 Start Server Restful: 
-        `node app/core/server/config/server_api_restful.js`;
-8. Realizar o load dos dados no Banco de dados: 
+7. Start Server: `grunt`; <br />
+        1) Start Server Admin: `node app/admin/server/config/server.js`; <br />
+        2) Start Server Avaliação: `node app/avaliacao/server/config/server.js`; <br />
+        3) Start Server Restful: 
+        `node app/core/server/config/server_api_restful.js`; <br />
+8. Realizar o load dos dados no Banco de dados:  <br />
         1) `http://localhost:3034/suporte/mongosse/`; <br />
         2) `http://localhost:3034/suporte/mongosse/aluguel`; <br />
         3) `http://localhost:3034/suporte/mongosse/avaliacao`; <br />
