@@ -107,9 +107,9 @@ exports.loadUsers = function(req, res, next) {
 
   userAdmin.save();
 
-  var agente = new Agente({
-      "nome": userAdmin.firstName, //Nome
-      "identificador": userAdmin.id, //Identificador
+  var agente = new Agente({ 
+      "nome": userAdmin.firstName, //Nome 
+      "identificador": userAdmin.id, //Identificador 
       "autorizacao_acesso": "autorizacao_acesso",//Autorização de acesso
       "credenciais_autorizacao": "Admin",//Credenciais de autenticação
       "relacao": "relacao",//Relação

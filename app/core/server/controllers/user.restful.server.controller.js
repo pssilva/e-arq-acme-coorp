@@ -24,7 +24,7 @@ exports.render = function(req, res) {
   * 
   * 
   */
-exports.index = function(req, res) { 
+exports.index = function(req, res) {
   console.log("ID:28 :: modelo.server.controller :: index() ");
   if (!req.isAuthenticated()) return res.redirect('/modelo/signin');
 

@@ -11,12 +11,14 @@ var pessoaSchema = new Schema({
         unique: true,
         required: true
      },
-    "endereco": {
+    "endereco": { 
         type: String, 
-        trim: true
-    },
-    "endereco": {
-        type: String, 
+        trim: true 
+    }, 
+    "type": {
+        type: String,  
+        enum: ['PF', 'PJ', 'ND'],
+        "default": "PF",
         trim: true
     },
     "createdBy": {

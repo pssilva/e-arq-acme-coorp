@@ -46,7 +46,7 @@ module.exports = function(db) {
     console.log("ID:43 :: admin :: express.js");
 
     require('../routers/index.server.routers')(app);
-    require('../routers/users.server.routes.js')(app);
+    require('../routers/users.server.routers.js')(app);
     /**#autoInsertRequire#*/
 
     app.use('/public',express.static('./app/core/client'));

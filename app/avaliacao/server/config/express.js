@@ -39,7 +39,8 @@ module.exports = function(db) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use(favicon(path.join('favicon.ico')))
+    app.use(favicon(path.join('favicon.ico')));
+    app.use(express.logger('dev'));
 
     app.use(flash());
     require('../routers/users.server.routers')(app);

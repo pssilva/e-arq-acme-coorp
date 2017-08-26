@@ -12,7 +12,8 @@ var config = require('./config'),
     methodOverride = require('method-override'),
     flash = require('connect-flash'),
     passport = require('passport'),
-    favicon = require('serve-favicon');
+    favicon = require('serve-favicon'),
+    url = require('url');
 
 module.exports = function(db) {
     var app = express();
@@ -39,20 +40,26 @@ module.exports = function(db) {
     app.use(passport.initialize());
     app.use(passport.session());
     
-    app.use(favicon(path.join('favicon.ico')))
-
+    app.use(favicon(path.join('favicon.ico')));
+    //app.use(express.logger('dev'));
     app.use(flash());
     
-    console.log("ID:43 :: core :: express.js");
+    console.log("ID:46 :: core :: express.js");
 
     require('../routers/index.server.routers')(app);
-    require('../routers/users.server.routes.js')(app);
+    require('../routers/agentes.server.routers.js')(app);
+    require('../routers/alugueis.server.routers.js')(app);
+    require('../routers/avaliacoes.server.routers.js')(app);
+    require('../routers/classe_temporalidades.server.routers.js')(app);
+    require('../routers/classes.server.routers.js')(app);
+    require('../routers/documentos.server.routers.js')(app);
+    require('../routers/users.server.restful.routers.js')(app);
+    require('../routers/users.server.routers.js')(app);
     /**#autoInsertRequire#*/
 
     app.use('/public',express.static('./app/core/client'));
     app.use('/AdminLTE',express.static('./app/core/client/themes/AdminLTE/'));
     app.use('/lib',express.static('./app/core/client/lib'));
-    app.use('/example',express.static('./app/example/client'));
     /**#autoInsertStaticPath#*/
 
     return app;
