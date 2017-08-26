@@ -7,7 +7,7 @@
 module.exports = function(app) {
     
     console.log("ID:9 :: classe_temporalidades.server.routers.js ");
-    var classe_temporalidades = require('../controllers/classe_temporalidade.server.controller');
+    var classe_temporalidades = require('../controllers/classe_temporalidade.restful.server.controller');
   
     app.get('/classe_temporalidades/api/v2',  function(req, res){ 
         classe_temporalidades.index(req, res); 

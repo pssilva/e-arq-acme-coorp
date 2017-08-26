@@ -45,6 +45,7 @@ export NODE_ENV=development
 ```
 6. Iniciar o serviço do MongoDB: `brew services start mongodb`;
 7. Start Server: `grunt`; <br />
+    Caso queira rodar os servidores individualmente: <br />
         1) Start Server Admin: `node app/admin/server/config/server.js`; <br />
         2) Start Server Avaliação: `node app/avaliacao/server/config/server.js`; <br />
         3) Start Server Restful: 
@@ -90,6 +91,7 @@ O projeto será adaptado para os seguintes temas (themes):
 \[Conarq, Conselho Nacional de Arquivos: 2011\], Copyright © 2011 Conselho Nacional de Arquivos, [e-ARQ Brasil](https://github.com/pssilva/e-arq-acme-coorp/blob/master/doc-repo/referencias/e-arq-brasil-2011-corrigido.pdf)<br />
 \[Caio Ribeiro Pereira: 2016\], Apress, [Building APIs with Node.js](https://www.amazon.com/Building-APIs-Node-js-Ribeiro-Pereira/dp/1484224418)<br />
 \[Valentin Bojinov: 2015\], Copyright © 2015 Packt Publishing, [RESTful Web API Design with Node.js](https://www.packtpub.com/web-development/restful-web-api-design-nodejs): Design and implement comprehensive RESTful solutions in Node.js<br />
+\[Jurie-Jan Botha: 2015\], Copyright © 2015 Packt Publishing, [Grunt Cookbook](https://www.packtpub.com/web-development/grunt-cookbook): Over 80 hands-on recipes for streamlining development, management, and deployment with Grunt<br />
 \[Valeri Karpov, Diego Netto: 2015\], John Wiley & Sons, Inc., [Professional AngularJS](http://www.allitebooks.com/professional-angularjs/)<br />
 \[Amos Q. Haviv: 2014\], Packt Publishing, [MEAN Web Development](http://it-ebooks.info/book/4849/): Master real-time web application development using a mean combination of MongoDB, Express, AngularJS, and Node.js. <br />
 \[Sébastien Goasguen: 2016\], O’Reilly Media, Inc., [Docker Cookbook](http://www.allitebooks.com/docker-cookbook/): SOLUTIONS AND EXAMPLES FOR BUILDING DISTRIBUTED APPLICATIONS.<br />

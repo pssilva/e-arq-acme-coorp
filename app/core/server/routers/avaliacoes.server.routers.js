@@ -7,7 +7,7 @@
 module.exports = function(app) {
     
     console.log("ID:9 :: avaliacoes.server.routers.js ");
-    var avaliacoes = require('../controllers/avaliacao.server.controller');
+    var avaliacoes = require('../controllers/avaliacao.restful.server.controller');
   
     app.get('/avaliacoes/api/v2',  function(req, res){ 
         avaliacoes.index(req, res); 

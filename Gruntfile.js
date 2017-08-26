@@ -1,7 +1,7 @@
 // [1] Wrapper function
 module.exports = function(grunt) {
-    var mongoose = require('./app/core/server/config/mongoose'),
-        express = require('./app/core/server/config/express');
+    // var mongoose = require('./app/core/server/config/mongoose'),
+    //     express = require('./app/core/server/config/express');
 
     // Load time-grunt to measure performance
     require('time-grunt')(grunt);
@@ -18,40 +18,33 @@ module.exports = function(grunt) {
         yeoman: appConfig,
 
         pkg: grunt.file.readJSON('package.json'),
-        // express: {
-        //     custom: {
-        //       options: {
-        //         port: 9001,
-        //         bases: 'www-root',
-        //         server: './server' // acessa o arquivo: server.js
-        //       }
-        //     }
-        // },
-        expressAdmin: {
-            custom: {
-              options: {
-                port: 3034,
-                bases: 'www-root',
-                server: './app/admin/server/config/server' // acessa o arquivo: server.js
-              }
-            }
-        },
-        expressAvaliacao: {
-            custom: {
-              options: {
-                port: 3045,
-                bases: 'www-root',
-                server: './app/avaliacao/server/config/server' // acessa o arquivo: server.js
-              }
-            }
-        },
-        expressRestful: {
-            custom: {
-              options: {
-                port: 3034,
-                bases: 'www-root',
-                server: './app/core/server/config/server_api_restful' // acessa o arquivo: server.js
-              }
+        express: {
+            admin: {
+                //custom: {
+                  options: {
+                    port: 3034,
+                    //bases: 'www-root',
+                    server: './app/admin/server/config/server' // acessa o arquivo: server.js
+                  }
+                //}
+            },
+            avaliacao: {
+                //custom: {
+                  options: {
+                    port: 3045,
+                    //bases: 'www-root',
+                    server: './app/avaliacao/server/config/server' // acessa o arquivo: server.js
+                  }
+                //}
+            },
+            restful: {
+                //custom: {
+                  options: {
+                    port: 3034,
+                    //bases: 'www-root',
+                    server: './app/core/server/config/server_api_restful' // acessa o arquivo: server.js
+                  //}
+                }
             }
         }
     });
@@ -60,15 +53,17 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt); 
     
     grunt.loadNpmTasks('grunt-contrib-connect'); 
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch'); 
     grunt.loadNpmTasks('grunt-parallel'); 
+
     grunt.registerTask('myServer', ['express-keepalive']); 
-    grunt.registerTask('adminServer', ['expressAdmin']); 
-    grunt.registerTask('avaliacaoServer', ['expressAvaliacao']); 
-    grunt.registerTask('restfulServer', ['expressRestful']); 
+    grunt.registerTask('adminServer', ['express:admin:custom']); 
+    grunt.registerTask('avaliacaoServer', ['express:avaliacao:custom']); 
+    grunt.registerTask('restfulServer', ['express:restful:custom']); 
 
     // [4] Default task 
-    grunt.registerTask('default', ['adminServer', 'avaliacaoServer', 'restfulServer','myServer']);
+    grunt.registerTask('default', ['adminServer', 'avaliacaoServer', 'restfulServer']);
 
 };
 

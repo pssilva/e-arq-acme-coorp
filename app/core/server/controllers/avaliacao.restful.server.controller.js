@@ -8,10 +8,10 @@ var mongoose = require('mongoose'),
     Pessoa = require('mongoose').model('Pessoa'),
     PessoaFisica = require('mongoose').model('PessoaFisica'),
     User = require('mongoose').model('User'),
-    Avalacao = require('mongoose').model('Avalacao');
+    Avaliacao = require('mongoose').model('Avaliacao');
 
 exports.render = function(req, res) {
-  console.log("ID:13 :: avalacao.restful.server.controller.js ");
+  console.log("ID:13 :: avaliacao.restful.server.controller.js ");
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
@@ -28,7 +28,7 @@ exports.render = function(req, res) {
   * 
   */
 exports.index = function(req, res) { 
-  console.log("ID:28 :: avalacao.restful.server.controller :: index()"); 
+  console.log("ID:28 :: avaliacao.restful.server.controller :: index()"); 
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
@@ -45,7 +45,7 @@ exports.index = function(req, res) {
   * 
   */ 
 exports.add = function(req, res) { 
-  console.log("ID:45 :: avalacao.restful.server.controller :: add() "); 
+  console.log("ID:45 :: avaliacao.restful.server.controller :: add() "); 
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
@@ -63,7 +63,7 @@ exports.add = function(req, res) {
   * 
   */
 exports.edit = function(req, res, id) {
-  console.log("ID:66 :: avalacao.restful.server.controller :: edit() ");
+  console.log("ID:66 :: avaliacao.restful.server.controller :: edit() ");
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
@@ -81,7 +81,7 @@ exports.edit = function(req, res, id) {
   * 
   */
 exports.delete = function(req, res, id) { 
-  console.log("ID:84 :: avalacao.restful.server.controller :: delete() "); 
+  console.log("ID:84 :: avaliacao.restful.server.controller :: delete() "); 
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 
@@ -99,7 +99,7 @@ exports.delete = function(req, res, id) {
   * 
   */
 exports.contract = function(req, res) { 
-  console.log("ID:101 :: avalacao.restful.server.controller :: contract() "); 
+  console.log("ID:101 :: avaliacao.restful.server.controller :: contract() "); 
   //if (!req.isAuthenticated()) return res.redirect('/modelo/signin'); 
 
     res.setHeader('content-type', 'application/json'); 

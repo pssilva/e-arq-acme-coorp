@@ -7,7 +7,7 @@
 module.exports = function(app) {
     
     console.log("ID:9 :: classes.server.routers.js ");
-    var classes = require('../controllers/classe.server.controller');
+    var classes = require('../controllers/classe.restful.server.controller');
   
     app.get('/classes/api/v2',  function(req, res){ 
         classes.index(req, res); 
