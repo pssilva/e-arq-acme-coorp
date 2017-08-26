@@ -18,27 +18,57 @@ module.exports = function(grunt) {
         yeoman: appConfig,
 
         pkg: grunt.file.readJSON('package.json'),
-        express: {
+        // express: {
+        //     custom: {
+        //       options: {
+        //         port: 9001,
+        //         bases: 'www-root',
+        //         server: './server' // acessa o arquivo: server.js
+        //       }
+        //     }
+        // },
+        expressAdmin: {
             custom: {
               options: {
-                port: 9001,
+                port: 3034,
                 bases: 'www-root',
-                server: './server' // acessa o arquivo: server.js
+                server: './app/admin/server/config/server' // acessa o arquivo: server.js
               }
             }
         },
+        expressAvaliacao: {
+            custom: {
+              options: {
+                port: 3045,
+                bases: 'www-root',
+                server: './app/avaliacao/server/config/server' // acessa o arquivo: server.js
+              }
+            }
+        },
+        expressRestful: {
+            custom: {
+              options: {
+                port: 3034,
+                bases: 'www-root',
+                server: './app/core/server/config/server_api_restful' // acessa o arquivo: server.js
+              }
+            }
+        }
     });
     
     // [3] Load all plug-in tasks automatically 
-    require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt); 
     
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-parallel');
-    grunt.registerTask('myServer', ['express', 'express-keepalive']);
+    grunt.loadNpmTasks('grunt-contrib-connect'); 
+    grunt.loadNpmTasks('grunt-contrib-watch'); 
+    grunt.loadNpmTasks('grunt-parallel'); 
+    grunt.registerTask('myServer', ['express-keepalive']); 
+    grunt.registerTask('adminServer', ['expressAdmin']); 
+    grunt.registerTask('avaliacaoServer', ['expressAvaliacao']); 
+    grunt.registerTask('restfulServer', ['expressRestful']); 
 
     // [4] Default task 
-    grunt.registerTask('default', ['myServer']);
+    grunt.registerTask('default', ['adminServer', 'avaliacaoServer', 'restfulServer','myServer']);
 
 };
 

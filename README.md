@@ -32,28 +32,30 @@ Projeto prático para o processo seletivo para Acme Coorp usando a especificaç�
 ### Como usar:
 Considerando que temos uma instância do Amazon Machine Image - AMI iniciada: [aqui](https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/AccessingInstances.html) AWS EC2. Execute os comandos abaixo:
 
-- 1. Clonar o projeto: `git clone https://github.com/pssilva/e-arq-acme-coorp.git`;
-- 2. Acessar a pasta: `cd e-arq-acme-coorp`;
-- 3. Instalar as dependencias: `mpn install`;
-- 4. Instalar as dependencias: `bower install`;
-- 5. Antes de iniciar o servidor você deve definir as seguintes variáveis de ambiente: 
+1. Clonar o projeto: `git clone https://github.com/pssilva/e-arq-acme-coorp.git`;
+2. Acessar a pasta: `cd e-arq-acme-coorp`;
+3. Instalar as dependencias: `mpn install`;
+4. Instalar as dependencias: `bower install`;
+5. Antes de iniciar o servidor você deve definir as seguintes variáveis de ambiente: 
 ```bash
 # será usado no sistema: process.env.SESSION_SECRET
 export SESSION_SECRET=?????? 
 # será usado no sistema: process.env.NODE_ENV
 export NODE_ENV=development 
 ```
-- 6. Iniciar o serviço do MongoDB: `brew services start mongodb`;
-- 7. Start Server Admin: `node app/admin/server/config/server.js`;
-- 8. Start Server Avaliação: `node app/avaliacao/server/config/server.js`;
-- 9. Start Server Restful: 
+6. Iniciar o serviço do MongoDB: `brew services start mongodb`;
+7. Start Server: `grunt`;
+7.1 Start Server Admin: `node app/admin/server/config/server.js`;
+7.2 Start Server Avaliação: `node app/avaliacao/server/config/server.js`;
+7.3 Start Server Restful: 
         `node app/core/server/config/server_api_restful.js`;
-- 10. Realizar o load dos dados no Banco de dados: 
+8. Realizar o load dos dados no Banco de dados: 
         1) `http://localhost:3034/suporte/mongosse/`; <br />
         2) `http://localhost:3034/suporte/mongosse/aluguel`; <br />
         3) `http://localhost:3034/suporte/mongosse/avaliacao`; <br />
-- 11. Start Server: `grunt`;
-- 12. Acessar o sistema Admin: `http://localhost:3034`;
+9. Acessar o sistema Admin: `http://localhost:3034`;
+10. Acessar o sistema Avaliações: `http://localhost:3045`;
+11. Acessar o sistema RESTful: `http://localhost:3033`;
 
 NOTA: MEAN CRUD - para criar um CRUD automaticamente use o comando: <br />
 `gradle -q createMeanCRUD -PmodelName=articles -PfeatureName=example`
