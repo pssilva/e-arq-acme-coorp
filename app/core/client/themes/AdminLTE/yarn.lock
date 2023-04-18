@@ -3129,8 +3129,8 @@ jshint@~2.8.0:
     shelljs "0.3.x"
     strip-json-comments "1.0.x"
 
-json-schema@0.2.3:
-  version "0.2.3"
+json-schema@^0.4.0:
+  version "0.4.0"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
 
 json-stable-stringify@^1.0.0:
